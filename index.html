@@ -24,7 +24,8 @@
         .header .meta { margin-top: 12px; display: flex; gap: 24px; font-size: 12px; opacity: 0.6; flex-wrap: wrap; color: #4a6a92; }
         .header .meta span { display: flex; align-items: center; gap: 4px; }
 
-        .stats-bar { max-width: 1500px; margin: -18px auto 0; padding: 0 24px; position: relative; z-index: 2; }        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .stats-bar { max-width: 1500px; margin: -18px auto 0; padding: 0 24px; position: relative; z-index: 2; }
+        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .stat-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 8px; padding: 16px 10px; box-shadow: 0 2px 16px rgba(99,146,235,0.10); text-align: center; transition: transform 0.2s; cursor: pointer; user-select: none; border: 1px solid rgba(255,255,255,0.8); }
         .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(99,146,235,0.15); }
         .stat-card.active-card { outline: 3px solid #2c5f8a; outline-offset: -3px; }
@@ -35,8 +36,6 @@
         .stat-card:nth-child(3) .stat-num { color: #389e0d; }
         .stat-card:nth-child(4) .stat-num { color: #096dd9; }
         .stat-card:nth-child(5) .stat-num { color: #531dab; }
-        .stat-card:nth-child(6) .stat-num { color: #c41d7f; }
-        .stat-card:nth-child(7) .stat-num { color: #d48806; }
 
         .main { max-width: 1500px; margin: 24px auto; padding: 0 24px; position: relative; z-index: 1; }
         .section { margin-bottom: 24px; }
@@ -114,7 +113,7 @@
         .platform-detail a { color: #2c5f8a; text-decoration: none; font-weight: 500; }
         .platform-detail a:hover { text-decoration: underline; }
         .platform-detail .detail-item { padding: 4px 0; }
-        .platform-detail .detail-item::before { content: '•'; color: #6392eb; margin-right: 6px; }
+        .platform-detail .detail-item::before { content: '\2022'; color: #6392eb; margin-right: 6px; }
 
         .platform-card:nth-child(1) { border-left-color: #c41d7f; }
         .platform-card:nth-child(2) { border-left-color: #389e0d; }
@@ -155,18 +154,18 @@
 
 <div class="stats-bar">
     <div class="stats-grid">
-        <div class="stat-card" onclick="clickStat('all')" title="点击查看全部项目"><div class="stat-num">21</div><div class="stat-label">项目总数</div></div>
-        <div class="stat-card" onclick="clickStat('tender')" title="点击查看招标公告"><div class="stat-num">8</div><div class="stat-label">招标公告</div></div>
+        <div class="stat-card" onclick="clickStat('all')" title="点击查看全部项目"><div class="stat-num">23</div><div class="stat-label">项目总数</div></div>
+        <div class="stat-card" onclick="clickStat('tender')" title="点击查看招标公告"><div class="stat-num">9</div><div class="stat-label">招标公告</div></div>
         <div class="stat-card" onclick="clickStat('win')" title="点击查看中标结果"><div class="stat-num">8</div><div class="stat-label">中标结果</div></div>
         <div class="stat-card" onclick="clickStat('intent')" title="点击查看采购意向"><div class="stat-num">1</div><div class="stat-label">采购意向</div></div>
-        <div class="stat-card" onclick="clickStat('contract')" title="点击查看合同备案"><div class="stat-num">2</div><div class="stat-label">合同备案</div></div>
+        <div class="stat-card" onclick="clickStat('contract')" title="点击查看合同备案"><div class="stat-num">3</div><div class="stat-label">合同备案</div></div>
     </div>
 </div>
 
 <div class="main">
 
     <div class="hint-box">
-        &#9888; 点击项目名称可跳转至原网页查看详情。每条信息均标注了数据来源平台。页面分为「上周数据」和「本周数据」两个区域，每区域内含子分类Tab。      每日10/12/16/18点自动采集并推送更新。
+        &#9888; 点击项目名称可跳转至原网页查看详情。每条信息均标注了数据来源平台。页面分为「上周数据」和「本周数据」两个区域，每区域内含子分类Tab。每日10/12/16/18点自动采集并推送更新。
     </div>
 
     <!-- 平台数据覆盖情况 -->
@@ -178,36 +177,38 @@
             <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">中国招标网（采购与招标网）</div>
                 <div class="p-url">chinabidding.cn</div>
-                <div class="p-count">获取 1 条采购意向信息 <span class="p-toggle">[点击展开]</span></div>
+                <div class="p-count">获取 3 条项目信息 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-has">有数据</span>
                 <div class="platform-detail">
                     <div class="detail-item"><a href="https://www.chinabidding.cn/zbgg/U-vzhgK7v.html" target="_blank">政协松溪县委员会办公室2026年7-9月政府采购意向</a></div>
+                    <div class="detail-item"><a href="https://www.chinabidding.cn/zbgs/U-vzs0n6K.html" target="_blank">松源街道南门村黄竹林至七里溪电站基础设施配套工程中标公示</a></div>
+                    <div class="detail-item"><a href="https://www.chinabidding.cn/zbgs/U-vzsVAOa.html" target="_blank">"百年蔗"生态产品园区1#4#原材料检测预成交结果公示</a></div>
                 </div>
             </div>
             <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">福建省政府采购网（南平公资中心）</div>
                 <div class="p-url">ggzy.np.gov.cn/sx</div>
-                <div class="p-count">获取 16 条松溪相关项目信息（最丰富） <span class="p-toggle">[点击展开]</span></div>
+                <div class="p-count">获取 18 条松溪相关项目信息（最丰富） <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-has">有数据</span>
                 <div class="platform-detail">
-                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）询价公告</a></div>
-                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html" target="_blank">松溪一中设施设备采购（小型报告厅设备）询价公告</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标公示</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html" target="_blank">2026年松溪县农村供水保障工程——茶平乡施工投标邀请书</a></div>
                     <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程投标邀请书</a></div>
-                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标公示 (12.40万)</a></div>
-                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">城区雨污分流第七期建设项目中标结果 (499.54万)</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html" target="_blank">综治中心建设项目（勘察、设计）采购公告</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">城区雨污分流第七期建设项目（零星片区）中标结果</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新等）询价公告</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">第三中学搬迁设施设备采购招标公告</a></div>
                     <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目结果公告 (263.00万)</a></div>
                     <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html" target="_blank">松溪县医院医疗设备采购结果公告 (87.32万)</a></div>
-                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">第三中学搬迁设施设备采购招标公告</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#监理中标候选人公示 (12.40万)</a></div>
                     <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/jsgc/010007/20260803/cb55fd2f-60f6-4f8f-a96a-d76e291da510.html" target="_blank">老旧小区二期改造——河东片区合同备案</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013007/20260803/2cbcab5f-9778-4280-821a-58342c137e92.html" target="_blank">茶平供销社改造提升项目合同备案</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html" target="_blank">新铺溪流域水生态环境综合治理工程（二期）变更公告</a></div>
                     <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目中标公示 (50.98万)</a></div>
                     <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校设施设备采购（二）中标结果 (297.54万)</a></div>
-                    <div class="detail-item" style="color:#888;">综治中心建设项目勘察设计招标 (预算71.74万)</div>
                     <div class="detail-item" style="color:#888;">白马山视频监控系统合同备案</div>
                     <div class="detail-item" style="color:#888;">湛卢学校设施设备采购（一）中标 (166.08万)</div>
-                    <div class="detail-item" style="color:#888;">百年蔗园区大棚建设监理中标 (12.40万)</div>
-                    <div class="detail-item" style="color:#888;">茶平供销社改造提升项目合同备案</div>
-                    <div class="detail-item" style="color:#888;">百年蔗园区原材料检测预成交公告</div>
-                    <div class="detail-item" style="color:#888;">松源街道南门村道路工程更正公告</div>
                 </div>
             </div>
             <div class="platform-card" onclick="togglePlatform(this)">
@@ -216,7 +217,7 @@
                 <div class="p-count">本期未检索到松溪独立数据 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-none">无数据</span>
                 <div class="platform-detail">
-                    <div class="detail-item">千里马招标网本期以“松溪”为关键词检索，未返回独立的松溪县招中标项目信息。</div>
+                    <div class="detail-item">千里马招标网本期以"松溪"为关键词检索，未返回独立的松溪县招中标项目信息。</div>
                     <div class="detail-item">访问网址：<a href="https://www.qianlima.com" target="_blank">www.qianlima.com</a></div>
                 </div>
             </div>
@@ -227,14 +228,14 @@
                 <span class="p-status p-has">有数据</span>
                 <div class="platform-detail">
                     <div class="detail-item"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学搬迁设施设备采购公开招标</a></div>
-                    <div class="detail-item"><a href="https://easy-prt.com/project?id=de6d6cdfe9a32b9d41190bcd691d1e47&type=01" target="_blank">三茶统筹产业园（二期）勘察</a></div>
-                    <div class="detail-item" style="color:#888;">部分松溪项目同时收录在福建政府采购网</div>
+                    <div class="detail-item"><a href="http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27086923.htm" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通等）询价</a></div>
+                    <div class="detail-item"><a href="http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27085072.htm" target="_blank">松溪一中设施设备采购（小型报告厅设备）询价</a></div>
                 </div>
             </div>
             <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">工采通电子招投标交易平台</div>
                 <div class="p-url">gongcaitong.cn</div>
-                <div class="p-count">未检索到松溪独立数据，主要聚合自南平公资中心 <span class="p-toggle">[点击展开]</span></div>
+                <div class="p-count">未检索到松溪独立数据 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-none">无独立数据</span>
                 <div class="platform-detail">
                     <div class="detail-item">工采通为福建省工程领域招投标交易平台，松溪县级项目未独立收录。</div>
@@ -258,8 +259,8 @@
 
     <!-- ==================== 区域选择：全部/上周/本周 ==================== -->
     <div class="area-bar">
-        <button class="area-btn active" onclick="switchArea('all', this)">全部数据（7月28日 - 8月7日）<span class="area-count">21条</span></button>
-        <button class="area-btn" onclick="switchArea('last', this)">上周（7月28日 - 8月3日）<span class="area-count">8条</span></button>
+        <button class="area-btn active" onclick="switchArea('all', this)">全部数据（7月28日 - 8月7日）<span class="area-count">23条</span></button>
+        <button class="area-btn" onclick="switchArea('last', this)">上周（7月28日 - 8月3日）<span class="area-count">10条</span></button>
         <button class="area-btn" onclick="switchArea('this', this)">本周（8月4日 - 8月7日）<span class="area-count">13条</span></button>
     </div>
 
@@ -277,32 +278,34 @@
         <!-- 全部-全部项目 -->
         <div class="tab-content active" id="all-all">
             <div class="section">
-                <div class="section-header"><div class="section-title">全部项目一览（上周+本周）</div><div class="section-badge">共 21 条</div></div>
+                <div class="section-header"><div class="section-title">全部项目一览（上周+本周）</div><div class="section-badge">共 23 条</div></div>
                 <div class="table-wrapper">
                     <table>
                         <thead><tr><th style="width:32px">#</th><th>项目名称</th><th>类型</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead>
                         <tbody>
-                            <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）中标公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html" target="_blank">松溪一中设施设备采购（小型报告厅设备）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">松溪县城区雨污分流第七期建设项目（城区零星片区）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="bidder">福建省侨达建筑有限公司</td><td class="money">499.54万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>6</td><td class="project-name"><span class="no-link">松溪县综治中心建设项目（勘察、设计）招标公告</span></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县委政法委</td><td>—</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目结果公告</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县人民政府办公室</td><td class="bidder">中国电信南平分公司</td><td class="money">263.00万</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>8</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购公开招标</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
-                            <tr><td>9</td><td class="project-name"><a href="https://easy-prt.com/project?id=de6d6cdfe9a32b9d41190bcd691d1e47&type=01" target="_blank">松溪县省级经济开发区三茶统筹产业园建设项目（二期）勘察</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                            <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标结果公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设发展有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html" target="_blank">2026年松溪县农村供水保障工程——茶平乡施工投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>4</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27085072.htm" target="_blank">松溪一中设施设备采购（小型报告厅设备）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                            <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>6</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">松溪县城区雨污分流第七期建设项目（城区零星片区）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="bidder">福建省侨达建筑有限公司</td><td class="money">499.54万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html" target="_blank">松溪县综治中心建设项目（勘察、设计）采购公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td>—</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>8</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目结果公告</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县人民政府办公室</td><td class="bidder">中国电信南平分公司</td><td class="money">263.00万</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>9</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购公开招标</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
                             <tr><td>10</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购招标公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                             <tr><td>11</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html" target="_blank">松溪县医院医疗设备采购项目结果公告（包1、2）</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县医院</td><td class="bidder">福建华恒医疗器械有限公司</td><td class="money">87.32万</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                             <tr><td>12</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料检测服务预成交公告</span></td><td><span class="tag tag-pre-deal">预成交</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县湛卢建设集团有限公司</td><td>—</td><td>—</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                             <tr><td>13</td><td class="project-name"><span class="no-link">松源街道南门村黄竹林至七里溪电站道路工程更正公告</span></td><td><span class="tag tag-correction">更正公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县松源街道办事处</td><td>—</td><td>—</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>14</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>15</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目中标公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>16</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区高二年段设施设备采购（二）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>17</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目合同备案</span></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>18</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）中标结果</span></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>19</td><td class="project-name"><span class="no-link">松溪县茶平供销社改造提升项目合同备案</span></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>20</td><td class="project-name"><a href="https://www.chinabidding.cn/zbgg/U-vzhgK7v.html" target="_blank">政协福建省松溪县委员会办公室2026年7-9月政府采购意向</a></td><td><span class="tag tag-intent">采购意向</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>政协松溪县委员会办公室</td><td>—</td><td>—</td><td>2026-07-30</td><td><span class="source-tag s-chinabidding">中国招标网</span></td></tr>
-                            <tr><td>21</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）中标结果</span></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-07-30</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>14</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标候选人公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>15</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>16</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010007/20260803/cb55fd2f-60f6-4f8f-a96a-d76e291da510.html" target="_blank">松溪县老旧小区二期改造及配套基础设施提升工程——河东片区改造项目合同备案</a></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县住房和城乡建设局</td><td class="bidder">福建省中霖工程建设有限公司</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>17</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013007/20260803/2cbcab5f-9778-4280-821a-58342c137e92.html" target="_blank">松溪县茶平供销社改造提升项目合同公示</a></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销合作社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>18</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html" target="_blank">松溪县新铺溪流域水生态环境综合治理工程项目（二期）变更公告</a></td><td><span class="tag tag-correction">变更公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td>—</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>19</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目中标公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>20</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区高二年段设施设备采购（二）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>21</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目合同备案</span></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>22</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）中标结果</span></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>23</td><td class="project-name"><a href="https://www.chinabidding.cn/zbgg/U-vzhgK7v.html" target="_blank">政协福建省松溪县委员会办公室2026年7-9月政府采购意向</a></td><td><span class="tag tag-intent">采购意向</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>政协松溪县委员会办公室</td><td>—</td><td>—</td><td>2026-07-30</td><td><span class="source-tag s-chinabidding">中国招标网</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -312,14 +315,14 @@
         <!-- 全部-招标公告 -->
         <div class="tab-content" id="all-tender">
             <div class="section">
-                <div class="section-header"><div class="section-title">招标公告（上周+本周）</div><div class="section-badge">共 8 条</div></div>
+                <div class="section-header"><div class="section-title">招标公告（上周+本周）</div><div class="section-badge">共 9 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html" target="_blank">松溪一中设施设备采购（小型报告厅设备）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程</a></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>4</td><td class="project-name"><span class="no-link">松溪县综治中心建设项目（勘察、设计）</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县委政法委</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>5</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
-                    <tr><td>6</td><td class="project-name"><a href="https://easy-prt.com/project?id=de6d6cdfe9a32b9d41190bcd691d1e47&type=01" target="_blank">松溪县三茶统筹产业园建设项目（二期）勘察</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html" target="_blank">2026年松溪县农村供水保障工程——茶平乡施工投标邀请书</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>3</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27085072.htm" target="_blank">松溪一中设施设备采购（小型报告厅设备）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                    <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程</a></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html" target="_blank">松溪县综治中心建设项目（勘察、设计）</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>6</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
                     <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购招标公告</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>8</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
@@ -331,14 +334,14 @@
             <div class="section">
                 <div class="section-header"><div class="section-title">中标结果（上周+本周）</div><div class="section-badge">共 8 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）中标公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标结果公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设发展有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">松溪县城区雨污分流第七期（零星片区）</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="bidder">福建省侨达建筑有限公司</td><td class="money">499.54万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县人民政府办公室</td><td class="bidder">中国电信南平分公司</td><td class="money">263.00万</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html" target="_blank">松溪县医院医疗设备采购（包1、2）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县医院</td><td class="bidder">福建华恒医疗器械有限公司</td><td class="money">87.32万</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区设施设备采购（二）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>6</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>8</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-07-30</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标候选人公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>6</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区设施设备采购（二）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>7</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>8</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
         </div>
@@ -359,10 +362,11 @@
         <!-- 全部-合同备案 -->
         <div class="tab-content" id="all-contract">
             <div class="section">
-                <div class="section-header"><div class="section-title">合同备案（上周+本周）</div><div class="section-badge">共 2 条</div></div>
+                <div class="section-header"><div class="section-title">合同备案（上周+本周）</div><div class="section-badge">共 3 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>2</td><td class="project-name"><span class="no-link">松溪县茶平供销社改造提升项目</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010007/20260803/cb55fd2f-60f6-4f8f-a96a-d76e291da510.html" target="_blank">松溪县老旧小区二期改造——河东片区改造项目合同备案</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县住房和城乡建设局</td><td class="bidder">福建省中霖工程建设有限公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013007/20260803/2cbcab5f-9778-4280-821a-58342c137e92.html" target="_blank">松溪县茶平供销社改造提升项目合同公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销合作社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>3</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
         </div>
@@ -370,10 +374,11 @@
         <!-- 全部-其他公告 -->
         <div class="tab-content" id="all-other">
             <div class="section">
-                <div class="section-header"><div class="section-title">其他公告（预成交/更正公告）</div><div class="section-badge">共 2 条</div></div>
+                <div class="section-header"><div class="section-title">其他公告（预成交/更正/变更）</div><div class="section-badge">共 3 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类型</th><th>招标人</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料检测服务预成交公告</span></td><td><span class="tag tag-pre-deal">预成交</span></td><td>松溪县湛卢建设集团有限公司</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>2</td><td class="project-name"><span class="no-link">松源街道南门村黄竹林至七里溪电站道路工程更正公告</span></td><td><span class="tag tag-correction">更正公告</span></td><td>松溪县松源街道办事处</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html" target="_blank">松溪县新铺溪流域水生态环境综合治理工程项目（二期）变更公告</a></td><td><span class="tag tag-correction">变更公告</span></td><td>松溪县城市建设综合开发公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>2</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料检测服务预成交公告</span></td><td><span class="tag tag-pre-deal">预成交</span></td><td>松溪县湛卢建设集团有限公司</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>3</td><td class="project-name"><span class="no-link">松源街道南门村黄竹林至七里溪电站道路工程更正公告</span></td><td><span class="tag tag-correction">更正公告</span></td><td>松溪县松源街道办事处</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
         </div>
@@ -389,24 +394,27 @@
             <button class="tab-btn" onclick="switchTab('last', 'tender', this)">招标公告</button>
             <button class="tab-btn" onclick="switchTab('last', 'win', this)">中标结果</button>
             <button class="tab-btn" onclick="switchTab('last', 'contract', this)">合同备案</button>
+            <button class="tab-btn" onclick="switchTab('last', 'other', this)">其他公告</button>
         </div>
 
         <!-- 上周-全部项目 -->
         <div class="tab-content active" id="last-all">
             <div class="section">
-                <div class="section-header"><div class="section-title">上周全部项目一览</div><div class="section-badge">共 8 条</div></div>
+                <div class="section-header"><div class="section-title">上周全部项目一览</div><div class="section-badge">共 10 条</div></div>
                 <div class="table-wrapper">
                     <table>
                         <thead><tr><th style="width:32px">#</th><th>项目名称</th><th>类型</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead>
                         <tbody>
-                            <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目中标公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区高二年段设施设备采购（二）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>3</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目合同备案</span></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>4</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）中标结果</span></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>5</td><td class="project-name"><a href="https://www.chinabidding.cn/zbgg/U-vzhgK7v.html" target="_blank">政协福建省松溪县委员会办公室2026年7-9月政府采购意向</a></td><td><span class="tag tag-intent">采购意向</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>政协松溪县委员会办公室</td><td>—</td><td>—</td><td>2026-07-30</td><td><span class="source-tag s-chinabidding">中国招标网</span></td></tr>
-                            <tr><td>6</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）中标结果</span></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-07-30</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>8</td><td class="project-name"><span class="no-link">松溪县茶平供销社改造提升项目合同备案</span></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标候选人公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010007/20260803/cb55fd2f-60f6-4f8f-a96a-d76e291da510.html" target="_blank">老旧小区二期改造——河东片区改造项目合同备案</a></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县住房和城乡建设局</td><td class="bidder">福建省中霖工程建设有限公司</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013007/20260803/2cbcab5f-9778-4280-821a-58342c137e92.html" target="_blank">茶平供销社改造提升项目合同公示</a></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销合作社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html" target="_blank">新铺溪流域水生态环境综合治理工程（二期）变更公告</a></td><td><span class="tag tag-correction">变更公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td>—</td><td>—</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>6</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目中标公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区设施设备采购（二）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>8</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目合同备案</span></td><td><span class="tag tag-contract">合同备案</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>9</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）中标结果</span></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>10</td><td class="project-name"><a href="https://www.chinabidding.cn/zbgg/U-vzhgK7v.html" target="_blank">政协福建省松溪县委员会办公室2026年7-9月政府采购意向</a></td><td><span class="tag tag-intent">采购意向</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>政协松溪县委员会办公室</td><td>—</td><td>—</td><td>2026-07-30</td><td><span class="source-tag s-chinabidding">中国招标网</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -441,10 +449,10 @@
             <div class="section">
                 <div class="section-header"><div class="section-title">中标结果</div><div class="section-badge">共 4 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区设施设备采购（二）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>2</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>4</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-07-30</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标候选人公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校（二中）校区设施设备采购（二）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福州冉星电子有限公司</td><td class="money">297.54万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>3</td><td class="project-name"><span class="no-link">湛卢学校（二中）校区设施设备采购（一）</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县教育局</td><td class="bidder">福建旭科贸易有限公司</td><td class="money">166.08万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县旧县乡下塅村委会</td><td class="bidder">福建六松建设有限公司</td><td class="money">50.98万</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
         </div>
@@ -452,10 +460,21 @@
         <!-- 上周-合同备案 -->
         <div class="tab-content" id="last-contract">
             <div class="section">
-                <div class="section-header"><div class="section-title">合同备案</div><div class="section-badge">共 2 条</div></div>
+                <div class="section-header"><div class="section-title">合同备案</div><div class="section-badge">共 3 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>2</td><td class="project-name"><span class="no-link">松溪县茶平供销社改造提升项目</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010007/20260803/cb55fd2f-60f6-4f8f-a96a-d76e291da510.html" target="_blank">老旧小区二期改造——河东片区改造项目</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县住房和城乡建设局</td><td class="bidder">福建省中霖工程建设有限公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013007/20260803/2cbcab5f-9778-4280-821a-58342c137e92.html" target="_blank">茶平供销社改造提升项目合同公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平供销合作社</td><td class="bidder">福建省昊盛建设工程有限公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>3</td><td class="project-name"><span class="no-link">松溪白马山视频监控系统建设项目</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县林业局</td><td>—</td><td>2026-07-31</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                </tbody></table></div>
+            </div>
+        </div>
+
+        <!-- 上周-其他公告 -->
+        <div class="tab-content" id="last-other">
+            <div class="section">
+                <div class="section-header"><div class="section-title">其他公告（变更公告）</div><div class="section-badge">共 1 条</div></div>
+                <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类型</th><th>招标人</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html" target="_blank">松溪县新铺溪流域水生态环境综合治理工程项目（二期）变更公告</a></td><td><span class="tag tag-correction">变更公告</span></td><td>松溪县城市建设综合开发公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
         </div>
@@ -480,15 +499,15 @@
                     <table>
                         <thead><tr><th style="width:32px">#</th><th>项目名称</th><th>类型</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead>
                         <tbody>
-                            <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）中标公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html" target="_blank">松溪一中设施设备采购（小型报告厅设备）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">松溪县城区雨污分流第七期建设项目（城区零星片区）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="bidder">福建省侨达建筑有限公司</td><td class="money">499.54万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>6</td><td class="project-name"><span class="no-link">松溪县综治中心建设项目（勘察、设计）招标公告</span></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县委政法委</td><td>—</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目结果公告</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县人民政府办公室</td><td class="bidder">中国电信南平分公司</td><td class="money">263.00万</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                            <tr><td>8</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购公开招标</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
-                            <tr><td>9</td><td class="project-name"><a href="https://easy-prt.com/project?id=de6d6cdfe9a32b9d41190bcd691d1e47&type=01" target="_blank">松溪县省级经济开发区三茶统筹产业园建设项目（二期）勘察</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                            <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标结果公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设发展有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html" target="_blank">2026年松溪县农村供水保障工程——茶平乡施工投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>4</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27085072.htm" target="_blank">松溪一中设施设备采购（小型报告厅设备）询价公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                            <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程投标邀请书</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>6</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">松溪县城区雨污分流第七期建设项目（城区零星片区）中标结果</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="bidder">福建省侨达建筑有限公司</td><td class="money">499.54万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html" target="_blank">松溪县综治中心建设项目（勘察、设计）采购公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td>—</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>8</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目结果公告</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县人民政府办公室</td><td class="bidder">中国电信南平分公司</td><td class="money">263.00万</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                            <tr><td>9</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购公开招标</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
                             <tr><td>10</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购招标公告</a></td><td><span class="tag tag-tender">招标公告</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                             <tr><td>11</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html" target="_blank">松溪县医院医疗设备采购项目结果公告（包1、2）</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县医院</td><td class="bidder">福建华恒医疗器械有限公司</td><td class="money">87.32万</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                             <tr><td>12</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料检测服务预成交公告</span></td><td><span class="tag tag-pre-deal">预成交</span></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县湛卢建设集团有限公司</td><td>—</td><td>—</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
@@ -502,14 +521,14 @@
         <!-- 本周-招标公告 -->
         <div class="tab-content" id="this-tender">
             <div class="section">
-                <div class="section-header"><div class="section-title">招标公告</div><div class="section-badge">共 7 条</div></div>
+                <div class="section-header"><div class="section-title">招标公告</div><div class="section-badge">共 8 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html" target="_blank">松溪一中设施设备采购（小型报告厅设备）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程</a></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>4</td><td class="project-name"><span class="no-link">松溪县综治中心建设项目（勘察、设计）</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县委政法委</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    <tr><td>5</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
-                    <tr><td>6</td><td class="project-name"><a href="https://easy-prt.com/project?id=de6d6cdfe9a32b9d41190bcd691d1e47&type=01" target="_blank">松溪县三茶统筹产业园建设项目（二期）勘察</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html" target="_blank">2026年松溪县农村供水保障工程——茶平乡施工投标邀请书</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html" target="_blank">松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>3</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27085072.htm" target="_blank">松溪一中设施设备采购（小型报告厅设备）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>福建省松溪第一中学</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
+                    <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html" target="_blank">高屯自然村道路改造及林屯村基础设施提升工程</a></td><td><span class="tag tag-construction">工程建设</span></td><td>郑墩镇人民政府</td><td>—</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>5</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html" target="_blank">松溪县综治中心建设项目（勘察、设计）</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="money">预算71.74万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>6</td><td class="project-name"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-ccgp">中国政府采购网</span></td></tr>
                     <tr><td>7</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">松溪县第三中学新教学楼搬迁设施设备采购招标公告</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县第三中学</td><td>—</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
@@ -520,7 +539,7 @@
             <div class="section">
                 <div class="section-header"><div class="section-title">中标结果</div><div class="section-badge">共 4 条</div></div>
                 <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html" target="_blank">"百年蔗"园区1#4#原材料种植大棚建设工程监理（重新发布）中标公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县湛卢建设集团有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html" target="_blank">"百年蔗"园区1#4#监理（重新发布）中标结果公示</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设发展有限公司</td><td class="bidder">福建兴昌达建设有限公司</td><td class="money">12.40万</td><td>2026-08-07</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">松溪县城区雨污分流第七期（零星片区）</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县城市建设综合开发公司</td><td class="bidder">福建省侨达建筑有限公司</td><td class="money">499.54万</td><td>2026-08-06</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县人民政府办公室</td><td class="bidder">中国电信南平分公司</td><td class="money">263.00万</td><td>2026-08-05</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>4</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html" target="_blank">松溪县医院医疗设备采购（包1、2）</a></td><td><span class="tag tag-procurement">政府采购</span></td><td>松溪县医院</td><td class="bidder">福建华恒医疗器械有限公司</td><td class="money">87.32万</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
@@ -540,7 +559,7 @@
         </div>
     </div>
 
-    <!-- 按来源查看（共享） -->
+    <!-- 按来源查看 -->
     <div class="section" style="margin-top: 24px;">
         <div class="section-header"><div class="section-title">按数据来源平台分类</div><div class="section-badge">6大平台</div></div>
         <div class="table-wrapper" style="padding: 20px 24px;">
@@ -554,10 +573,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong style="color:#c41d7f">中国招标网</strong>（采购与招标网）</td><td><a href="https://www.chinabidding.cn" target="_blank" style="color:#2c5f8a;">www.chinabidding.cn</a></td><td>1条</td><td>含1条政府采购意向信息</td></tr>
-                    <tr><td><strong style="color:#389e0d">福建省政府采购网</strong>（南平公资中心）</td><td><a href="https://ggzy.np.gov.cn/sx" target="_blank" style="color:#2c5f8a;">ggzy.np.gov.cn/sx</a></td><td>16条</td><td>最丰富来源，含中标结果、招标公告、合同备案、预成交、更正公告等</td></tr>
+                    <tr><td><strong style="color:#c41d7f">中国招标网</strong>（采购与招标网）</td><td><a href="https://www.chinabidding.cn" target="_blank" style="color:#2c5f8a;">www.chinabidding.cn</a></td><td>3条</td><td>含采购意向、中标公示、预成交结果</td></tr>
+                    <tr><td><strong style="color:#389e0d">福建省政府采购网</strong>（南平公资中心）</td><td><a href="https://ggzy.np.gov.cn/sx" target="_blank" style="color:#2c5f8a;">ggzy.np.gov.cn/sx</a></td><td>18条</td><td>最丰富来源，含中标结果、招标公告、合同备案、变更公告等</td></tr>
                     <tr><td><strong style="color:#d48806">千里马招标网</strong></td><td><a href="https://www.qianlima.com" target="_blank" style="color:#2c5f8a;">www.qianlima.com</a></td><td>0条</td><td>本期未检索到松溪独立数据</td></tr>
-                    <tr><td><strong style="color:#096dd9">中国政府采购网</strong></td><td><a href="http://www.ccgp.gov.cn" target="_blank" style="color:#2c5f8a;">www.ccgp.gov.cn</a></td><td>3条</td><td>含招标公告、磋商公告等</td></tr>
+                    <tr><td><strong style="color:#096dd9">中国政府采购网</strong></td><td><a href="http://www.ccgp.gov.cn" target="_blank" style="color:#2c5f8a;">www.ccgp.gov.cn</a></td><td>3条</td><td>含招标公告、询价公告等</td></tr>
                     <tr><td><strong style="color:#531dab">工采通电子招投标交易平台</strong></td><td><a href="https://www.gongcaitong.cn" target="_blank" style="color:#2c5f8a;">www.gongcaitong.cn</a></td><td>0条</td><td>未检索到松溪独立数据，其信息主要聚合自南平公资中心</td></tr>
                     <tr><td><strong style="color:#d47006">中国招标投标公共服务平台</strong></td><td><a href="http://www.cebpubservice.com" target="_blank" style="color:#2c5f8a;">www.cebpubservice.com</a></td><td>0条</td><td>侧重省级以上大型工程，松溪县级项目未独立收录</td></tr>
                 </tbody>
