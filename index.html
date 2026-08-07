@@ -24,7 +24,7 @@
         .header .meta { margin-top: 12px; display: flex; gap: 24px; font-size: 12px; opacity: 0.6; flex-wrap: wrap; color: #4a6a92; }
         .header .meta span { display: flex; align-items: center; gap: 4px; }
 
-        .stats-bar { max-width: 1500px; margin: -18px auto 0; padding: 0 24px; position: relative; z-index: 2; }        .stats-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+        .stats-bar { max-width: 1500px; margin: -18px auto 0; padding: 0 24px; position: relative; z-index: 2; }        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .stat-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 8px; padding: 16px 10px; box-shadow: 0 2px 16px rgba(99,146,235,0.10); text-align: center; transition: transform 0.2s; cursor: pointer; user-select: none; border: 1px solid rgba(255,255,255,0.8); }
         .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(99,146,235,0.15); }
         .stat-card.active-card { outline: 3px solid #2c5f8a; outline-offset: -3px; }
@@ -80,11 +80,11 @@
 
         /* Area tabs (上周/本周) */
         .area-bar { display: flex; gap: 0; margin-bottom: 0; border-radius: 8px 8px 0 0; overflow: hidden; }
-        .area-btn { flex: 1; padding: 14px 20px; text-align: center; cursor: pointer; font-size: 15px; font-weight: 700; background: #d6dae0; color: #777; border: none; transition: all 0.3s; }
-        .area-btn:hover { background: #c5cad2; }
-        .area-btn.active { background: #fff; color: #1a3a5c; }
-        .area-btn .area-count { display: inline-block; margin-left: 6px; background: rgba(28,90,138,0.1); color: #1a3a5c; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
-        .area-btn:not(.active) .area-count { background: rgba(0,0,0,0.08); color: #888; }
+        .area-btn { flex: 1; padding: 14px 20px; text-align: center; cursor: pointer; font-size: 15px; font-weight: 700; background: rgba(206,223,248,0.5); color: #4a6a92; border: none; transition: all 0.3s; border-top: 1px solid rgba(255,255,255,0.5); border-left: 1px solid rgba(255,255,255,0.4); border-right: 1px solid rgba(255,255,255,0.4); }
+        .area-btn:hover { background: rgba(191,211,240,0.6); color: #2c5f8a; }
+        .area-btn.active { background: rgba(255,255,255,0.88); color: #16467a; }
+        .area-btn .area-count { display: inline-block; margin-left: 6px; background: rgba(28,90,138,0.12); color: #16467a; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+        .area-btn:not(.active) .area-count { background: rgba(74,106,146,0.12); color: #4a6a92; }
 
         .area-content { display: none; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 0 0 8px 8px; box-shadow: 0 2px 16px rgba(99,146,235,0.08); padding: 20px 24px; border: 1px solid rgba(255,255,255,0.7); border-top: none; }
         .area-content.active { display: block; }
@@ -100,13 +100,21 @@
         .hint-box { background: #fffbe6; border: 1px solid #ffe58f; border-radius: 6px; padding: 10px 14px; margin-bottom: 18px; font-size: 12px; color: #8c6d1f; }
 
         .platform-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
-        .platform-card { background: rgba(255,255,255,0.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(99,146,235,0.07); border-left: 4px solid #ccc; border-top: 1px solid rgba(255,255,255,0.7); border-right: 1px solid rgba(255,255,255,0.5); border-bottom: 1px solid rgba(255,255,255,0.5); }
+        .platform-card { background: rgba(255,255,255,0.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(99,146,235,0.07); border-left: 4px solid #ccc; border-top: 1px solid rgba(255,255,255,0.7); border-right: 1px solid rgba(255,255,255,0.5); border-bottom: 1px solid rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; }
+        .platform-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(99,146,235,0.12); }
         .platform-card .p-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
         .platform-card .p-url { font-size: 11px; color: #2c5f8a; margin-bottom: 6px; word-break: break-all; }
         .platform-card .p-count { font-size: 12px; color: #666; }
         .platform-card .p-status { display: inline-block; padding: 1px 8px; border-radius: 8px; font-size: 11px; margin-top: 6px; }
+        .platform-card .p-toggle { display: inline-block; margin-left: 6px; font-size: 11px; color: #2c5f8a; font-weight: 500; }
         .p-has { background: #f6ffed; color: #389e0d; border: 1px solid #b7eb8f; }
         .p-none { background: #f5f5f5; color: #999; border: 1px solid #e8e8e8; }
+        .platform-detail { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(99,146,235,0.2); font-size: 12px; color: #555; line-height: 1.8; }
+        .platform-detail.show { display: block; }
+        .platform-detail a { color: #2c5f8a; text-decoration: none; font-weight: 500; }
+        .platform-detail a:hover { text-decoration: underline; }
+        .platform-detail .detail-item { padding: 4px 0; }
+        .platform-detail .detail-item::before { content: '•'; color: #6392eb; margin-right: 6px; }
 
         .platform-card:nth-child(1) { border-left-color: #c41d7f; }
         .platform-card:nth-child(2) { border-left-color: #389e0d; }
@@ -152,8 +160,6 @@
         <div class="stat-card" onclick="clickStat('win')" title="点击查看中标结果"><div class="stat-num">7</div><div class="stat-label">中标结果</div></div>
         <div class="stat-card" onclick="clickStat('intent')" title="点击查看采购意向"><div class="stat-num">1</div><div class="stat-label">采购意向</div></div>
         <div class="stat-card" onclick="clickStat('contract')" title="点击查看合同备案"><div class="stat-num">2</div><div class="stat-label">合同备案</div></div>
-        <div class="stat-card" onclick="clickStat('by-source')" title="点击查看有数据平台详情"><div class="stat-num">3</div><div class="stat-label">有数据平台</div></div>
-        <div class="stat-card" onclick="clickStat('by-source')" title="点击查看无数据平台说明"><div class="stat-num">3</div><div class="stat-label">无数据平台</div></div>
     </div>
 </div>
 
@@ -169,41 +175,79 @@
             <div class="section-title">六大数据来源平台覆盖情况</div>
         </div>
         <div class="platform-summary">
-            <div class="platform-card">
+            <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">中国招标网（采购与招标网）</div>
                 <div class="p-url">chinabidding.cn</div>
-                <div class="p-count">获取 1 条采购意向信息</div>
+                <div class="p-count">获取 1 条采购意向信息 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-has">有数据</span>
+                <div class="platform-detail">
+                    <div class="detail-item"><a href="https://www.chinabidding.cn/zbgg/U-vzhgK7v.html" target="_blank">政协松溪县委员会办公室2026年7-9月政府采购意向</a></div>
+                </div>
             </div>
-            <div class="platform-card">
+            <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">福建省政府采购网（南平公资中心）</div>
                 <div class="p-url">ggzy.np.gov.cn/sx</div>
-                <div class="p-count">获取 13 条松溪相关项目信息（最丰富）</div>
+                <div class="p-count">获取 13 条松溪相关项目信息（最丰富） <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-has">有数据</span>
+                <div class="platform-detail">
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/f94a5d42-f31b-45f6-8cac-0c24c871b969.html" target="_blank">城区雨污分流第七期建设项目中标结果 (499.54万)</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html" target="_blank">无纸化及移动办公系统建设项目结果公告 (263.00万)</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html" target="_blank">松溪县医院医疗设备采购结果公告 (87.32万)</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html" target="_blank">第三中学搬迁设施设备采购招标公告</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260803/ee2f904d-7286-423a-91f6-7bbed5b63d66.html" target="_blank">茶平乡惠民公共空间改造提升工程投标邀请书</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260731/5045064a-1ca4-46d2-aeec-fff8592ea8b2.html" target="_blank">下塅村基础设施提升工程项目中标公示 (50.98万)</a></div>
+                    <div class="detail-item"><a href="https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260731/FJS-2001553202607313428480.html" target="_blank">湛卢学校设施设备采购（二）中标结果 (297.54万)</a></div>
+                    <div class="detail-item" style="color:#888;">综治中心建设项目勘察设计招标 (预算71.74万)</div>
+                    <div class="detail-item" style="color:#888;">白马山视频监控系统合同备案</div>
+                    <div class="detail-item" style="color:#888;">湛卢学校设施设备采购（一）中标 (166.08万)</div>
+                    <div class="detail-item" style="color:#888;">百年蔗园区大棚建设监理中标 (12.40万)</div>
+                    <div class="detail-item" style="color:#888;">茶平供销社改造提升项目合同备案</div>
+                    <div class="detail-item" style="color:#888;">百年蔗园区原材料检测预成交公告</div>
+                    <div class="detail-item" style="color:#888;">松源街道南门村道路工程更正公告</div>
+                </div>
             </div>
-            <div class="platform-card">
+            <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">千里马招标网</div>
                 <div class="p-url">qianlima.com</div>
-                <div class="p-count">本期未检索到松溪独立数据</div>
+                <div class="p-count">本期未检索到松溪独立数据 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-none">无数据</span>
+                <div class="platform-detail">
+                    <div class="detail-item">千里马招标网本期以“松溪”为关键词检索，未返回独立的松溪县招中标项目信息。</div>
+                    <div class="detail-item">访问网址：<a href="https://www.qianlima.com" target="_blank">www.qianlima.com</a></div>
+                </div>
             </div>
-            <div class="platform-card">
+            <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">中国政府采购网</div>
                 <div class="p-url">ccgp.gov.cn</div>
-                <div class="p-count">获取 3 条项目信息</div>
+                <div class="p-count">获取 3 条项目信息 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-has">有数据</span>
+                <div class="platform-detail">
+                    <div class="detail-item"><a href="http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm" target="_blank">松溪县第三中学搬迁设施设备采购公开招标</a></div>
+                    <div class="detail-item"><a href="https://easy-prt.com/project?id=de6d6cdfe9a32b9d41190bcd691d1e47&type=01" target="_blank">三茶统筹产业园（二期）勘察</a></div>
+                    <div class="detail-item" style="color:#888;">部分松溪项目同时收录在福建政府采购网</div>
+                </div>
             </div>
-            <div class="platform-card">
+            <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">工采通电子招投标交易平台</div>
                 <div class="p-url">gongcaitong.cn</div>
-                <div class="p-count">松溪相关项目未独立收录，其数据主要聚合自南平公资中心</div>
+                <div class="p-count">未检索到松溪独立数据，主要聚合自南平公资中心 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-none">无独立数据</span>
+                <div class="platform-detail">
+                    <div class="detail-item">工采通为福建省工程领域招投标交易平台，松溪县级项目未独立收录。</div>
+                    <div class="detail-item">其数据主要聚合自南平市公共资源交易中心（ggzy.np.gov.cn）。</div>
+                    <div class="detail-item">访问网址：<a href="https://www.gongcaitong.cn" target="_blank">www.gongcaitong.cn</a></div>
+                </div>
             </div>
-            <div class="platform-card">
+            <div class="platform-card" onclick="togglePlatform(this)">
                 <div class="p-name">中国招标投标公共服务平台</div>
                 <div class="p-url">cebpubservice.com</div>
-                <div class="p-count">松溪县级项目未独立收录，该平台侧重省级以上大型工程</div>
+                <div class="p-count">侧重省级以上大型工程，松溪县级项目未独立收录 <span class="p-toggle">[点击展开]</span></div>
                 <span class="p-status p-none">无独立数据</span>
+                <div class="platform-detail">
+                    <div class="detail-item">该平台为国家级招标投标信息发布平台，主要收录省级以上大型工程建设项目。</div>
+                    <div class="detail-item">松溪县作为县级区域，其项目一般不在该平台独立发布。</div>
+                    <div class="detail-item">访问网址：<a href="http://www.cebpubservice.com" target="_blank">www.cebpubservice.com</a></div>
+                </div>
             </div>
         </div>
     </div>
@@ -417,6 +461,18 @@
 </div>
 
 <script>
+function togglePlatform(card) {
+    var detail = card.querySelector('.platform-detail');
+    var toggle = card.querySelector('.p-toggle');
+    if (detail.classList.contains('show')) {
+        detail.classList.remove('show');
+        toggle.textContent = '[点击展开]';
+    } else {
+        detail.classList.add('show');
+        toggle.textContent = '[收起]';
+    }
+}
+
 function switchArea(area, el) {
     document.querySelectorAll('.area-content').forEach(function(c) { c.classList.remove('active'); });
     document.querySelectorAll('.area-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -439,13 +495,11 @@ function clickStat(type) {
     var thisTypes = { 'all': true, 'tender': true, 'win': true, 'other': true };
 
     if (type === 'by-source') {
-        // 滚动到按来源查看
         document.querySelectorAll('.section').forEach(function(s) {
-            if (s.querySelector('.section-title') && s.querySelector('.section-title').textContent.indexOf('按数据来源') >= 0) {
+            if (s.querySelector('.section-title') && s.querySelector('.section-title').textContent.indexOf('六大数据来源') >= 0) {
                 s.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
-        // 高亮统计卡片
         document.querySelectorAll('.stat-card').forEach(function(c) { c.classList.remove('active-card'); });
         return;
     }
