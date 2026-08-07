@@ -6,20 +6,27 @@
     <title>松溪县招中标信息汇总 — 六大平台数据（上周+本周）</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+        body { font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif; color: #333; line-height: 1.6; position: relative; min-height: 100vh; background: linear-gradient(135deg, #f4f8fe 0%, #eef3fb 30%, #e8eef8 60%, #e2eaf6 100%); }
+        /* 背景装饰 - 柔和弥散光晕 */
+        body::before { content: ''; position: fixed; top: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,146,235,0.10) 0%, rgba(99,146,235,0.03) 40%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
+        body::after { content: ''; position: fixed; bottom: -300px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(124,158,224,0.09) 0%, rgba(124,158,224,0.02) 40%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; }
+        /* 背景装饰 - 极淡方格纹理 */
+        .bg-grid { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(99,146,235,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(99,146,235,0.035) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+        .bg-deco-c { position: fixed; bottom: 10%; left: 5%; width: 160px; height: 160px; border: 2px solid rgba(99,146,235,0.07); border-radius: 50%; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); pointer-events: none; z-index: 0; }
+        .bg-deco-circle { position: fixed; top: 15%; right: 8%; width: 120px; height: 120px; border: 1.5px solid rgba(124,158,224,0.06); border-radius: 50%; pointer-events: none; z-index: 0; }
 
-        .header { background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 40%, #2c5f8a 100%); color: #fff; padding: 36px 0 28px; position: relative; overflow: hidden; }
-        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 0v40M0 20h40' stroke='%23ffffff' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E") repeat; }
+        .header { background: linear-gradient(135deg, rgba(224,236,255,0.85) 0%, rgba(206,223,248,0.8) 40%, rgba(191,211,240,0.75) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: #1a3a5c; padding: 36px 0 28px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.6); }
+        .header::before { content: ''; position: absolute; top: -50px; right: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(99,146,235,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+        .header::after { content: ''; position: absolute; bottom: -80px; left: 10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(124,158,224,0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
         .header-content { max-width: 1500px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-        .header h1 { font-size: 30px; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
-        .header .subtitle { font-size: 14px; opacity: 0.8; font-weight: 300; }
-        .header .meta { margin-top: 12px; display: flex; gap: 24px; font-size: 12px; opacity: 0.65; flex-wrap: wrap; }
+        .header h1 { font-size: 30px; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; color: #16467a; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
+        .header .subtitle { font-size: 14px; opacity: 0.75; font-weight: 400; color: #3a5a82; }
+        .header .meta { margin-top: 12px; display: flex; gap: 24px; font-size: 12px; opacity: 0.6; flex-wrap: wrap; color: #4a6a92; }
         .header .meta span { display: flex; align-items: center; gap: 4px; }
 
-        .stats-bar { max-width: 1500px; margin: -18px auto 0; padding: 0 24px; position: relative; z-index: 2; }
-        .stats-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
-        .stat-card { background: #fff; border-radius: 8px; padding: 16px 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s; cursor: pointer; user-select: none; }
-        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+        .stats-bar { max-width: 1500px; margin: -18px auto 0; padding: 0 24px; position: relative; z-index: 2; }        .stats-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+        .stat-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 8px; padding: 16px 10px; box-shadow: 0 2px 16px rgba(99,146,235,0.10); text-align: center; transition: transform 0.2s; cursor: pointer; user-select: none; border: 1px solid rgba(255,255,255,0.8); }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(99,146,235,0.15); }
         .stat-card.active-card { outline: 3px solid #2c5f8a; outline-offset: -3px; }
         .stat-card .stat-num { font-size: 28px; font-weight: 700; }
         .stat-card .stat-label { font-size: 12px; color: #888; margin-top: 2px; }
@@ -31,14 +38,14 @@
         .stat-card:nth-child(6) .stat-num { color: #c41d7f; }
         .stat-card:nth-child(7) .stat-num { color: #d48806; }
 
-        .main { max-width: 1500px; margin: 24px auto; padding: 0 24px; }
+        .main { max-width: 1500px; margin: 24px auto; padding: 0 24px; position: relative; z-index: 1; }
         .section { margin-bottom: 24px; }
         .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
         .section-title { font-size: 18px; font-weight: 700; color: #1a3a5c; display: flex; align-items: center; gap: 8px; }
         .section-title::before { content: ''; width: 4px; height: 20px; background: linear-gradient(180deg, #2c5f8a, #1a3a5c); border-radius: 2px; }
         .section-badge { background: #e8f4fd; color: #1a3a5c; padding: 3px 12px; border-radius: 16px; font-size: 12px; font-weight: 500; }
 
-        .table-wrapper { background: #fff; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); overflow-x: auto; }
+        .table-wrapper { background: rgba(255,255,255,0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 8px; box-shadow: 0 2px 16px rgba(99,146,235,0.08); overflow-x: auto; border: 1px solid rgba(255,255,255,0.7); }
         table { width: 100%; border-collapse: collapse; min-width: 1200px; }
         thead { background: linear-gradient(180deg, #f7f9fc, #eef2f7); }
         th { padding: 12px 10px; text-align: left; font-size: 12px; font-weight: 600; color: #5a6a7a; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
@@ -79,7 +86,7 @@
         .area-btn .area-count { display: inline-block; margin-left: 6px; background: rgba(28,90,138,0.1); color: #1a3a5c; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
         .area-btn:not(.active) .area-count { background: rgba(0,0,0,0.08); color: #888; }
 
-        .area-content { display: none; background: #fff; border-radius: 0 0 8px 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 20px 24px; }
+        .area-content { display: none; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 0 0 8px 8px; box-shadow: 0 2px 16px rgba(99,146,235,0.08); padding: 20px 24px; border: 1px solid rgba(255,255,255,0.7); border-top: none; }
         .area-content.active { display: block; }
 
         /* Sub tabs within each area */
@@ -93,7 +100,7 @@
         .hint-box { background: #fffbe6; border: 1px solid #ffe58f; border-radius: 6px; padding: 10px 14px; margin-bottom: 18px; font-size: 12px; color: #8c6d1f; }
 
         .platform-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
-        .platform-card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #ccc; }
+        .platform-card { background: rgba(255,255,255,0.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(99,146,235,0.07); border-left: 4px solid #ccc; border-top: 1px solid rgba(255,255,255,0.7); border-right: 1px solid rgba(255,255,255,0.5); border-bottom: 1px solid rgba(255,255,255,0.5); }
         .platform-card .p-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
         .platform-card .p-url { font-size: 11px; color: #2c5f8a; margin-bottom: 6px; word-break: break-all; }
         .platform-card .p-count { font-size: 12px; color: #666; }
@@ -120,7 +127,11 @@
 </head>
 <body>
 
-<div class="header">
+<div class="bg-grid"></div>
+<div class="bg-deco-c"></div>
+<div class="bg-deco-circle"></div>
+
+<div class="header" style="position: relative; z-index: 1;">
     <div class="header-content">
         <h1>松溪县招中标信息汇总</h1>
         <div class="subtitle">数据来源：中国招标网 / 福建省政府采购网 / 千里马招标网 / 中国政府采购网 / 工采通 / 中国招标投标公共服务平台 | 上周（7月28日-8月3日）+ 本周（8月4日-8月7日）</div>
