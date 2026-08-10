@@ -228,8 +228,8 @@
     <!-- ==================== 区域选择：全部/上周/本周 ==================== -->
     <div class="area-bar">
         <button class="area-btn active" onclick="switchArea('all', this)">全部数据（8月3日 - 8月10日）<span class="area-count">21条</span></button>
-        <button class="area-btn" onclick="switchArea('last', this)">上周（8月3日 - 8月9日）<span class="area-count">19条</span></button>
         <button class="area-btn" onclick="switchArea('this', this)">本周（8月10日）<span class="area-count">2条</span></button>
+        <button class="area-btn" onclick="switchArea('last', this)">上周（8月3日 - 8月9日）<span class="area-count">19条</span></button>
     </div>
 
     <!-- ==================== 全部数据 ==================== -->
@@ -333,6 +333,49 @@
         </div>
     </div>
 
+    <!-- ==================== 本周数据 ==================== -->
+    <div class="area-content" id="area-this" style="border-radius: 0 0 8px 8px;">
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('this', 'all', this)">全部项目</button>
+            <button class="tab-btn" onclick="switchTab('this', 'win', this)">中标结果</button>
+            <button class="tab-btn" onclick="switchTab('this', 'other', this)">其他公告</button>
+        </div>
+
+        <!-- 本周-全部项目 -->
+        <div class="tab-content active" id="this-all">
+            <div class="section">
+                <div class="section-header"><div class="section-title">本周全部项目一览（8月10日）</div><div class="section-badge">共 2 条</div></div>
+                <div class="table-wrapper"><table>
+                    <thead><tr><th style="width:32px">#</th><th>项目名称</th><th>类型</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html" target="_blank">松溪县红旗街片区棚户区改造项目—B地块设计方案优化服务采购中标候选人公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县强村振兴投资发展有限公司</td><td class="bidder">天津大学建筑设计规划研究总院有限公司</td><td class="money">72.00万</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                        <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html" target="_blank">2026年松溪县农村供水保障工程--茶平乡施工答疑纪要</a></td><td><span class="tag tag-correction">其他公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                    </tbody>
+                </table></div>
+            </div>
+        </div>
+
+        <!-- 本周-中标结果 -->
+        <div class="tab-content" id="this-win">
+            <div class="section">
+                <div class="section-header"><div class="section-title">中标结果</div><div class="section-badge">共 1 条</div></div>
+                <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html" target="_blank">松溪县红旗街片区棚户区改造项目—B地块设计方案优化服务采购</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县强村振兴投资发展有限公司</td><td class="bidder">天津大学建筑设计规划研究总院有限公司</td><td class="money">72.00万</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                </tbody></table></div>
+            </div>
+        </div>
+
+        <!-- 本周-其他公告 -->
+        <div class="tab-content" id="this-other">
+            <div class="section">
+                <div class="section-header"><div class="section-title">其他公告</div><div class="section-badge">共 1 条</div></div>
+                <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类型</th><th>招标人</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
+                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html" target="_blank">2026年松溪县农村供水保障工程--茶平乡施工答疑纪要</a></td><td><span class="tag tag-correction">答疑纪要</span></td><td>松溪县茶平乡人民政府</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
+                </tbody></table></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== 上周数据 ==================== -->
     <div class="area-content" id="area-last" style="border-radius: 0 0 8px 8px;">
         <div class="tab-bar">
@@ -425,49 +468,6 @@
                     <tr><td>1</td><td class="project-name"><span class="no-link">"百年蔗"园区1#4#原材料检测服务预成交公告</span></td><td><span class="tag tag-pre-deal">预成交</span></td><td>松溪县湛卢建设集团有限公司</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>2</td><td class="project-name"><span class="no-link">松源街道南门村黄竹林至七里溪电站道路工程更正公告</span></td><td><span class="tag tag-correction">更正公告</span></td><td>松溪县松源街道办事处</td><td>2026-08-04</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                     <tr><td>3</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html" target="_blank">松溪县新铺溪流域水生态环境综合治理工程项目-（二期）变更公告</a></td><td><span class="tag tag-correction">变更公告</span></td><td>松溪县湛卢建设集团有限公司</td><td>2026-08-03</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                </tbody></table></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== 本周数据 ==================== -->
-    <div class="area-content" id="area-this" style="border-radius: 0 0 8px 8px;">
-        <div class="tab-bar">
-            <button class="tab-btn active" onclick="switchTab('this', 'all', this)">全部项目</button>
-            <button class="tab-btn" onclick="switchTab('this', 'win', this)">中标结果</button>
-            <button class="tab-btn" onclick="switchTab('this', 'other', this)">其他公告</button>
-        </div>
-
-        <!-- 本周-全部项目 -->
-        <div class="tab-content active" id="this-all">
-            <div class="section">
-                <div class="section-header"><div class="section-title">本周全部项目一览（8月10日）</div><div class="section-badge">共 2 条</div></div>
-                <div class="table-wrapper"><table>
-                    <thead><tr><th style="width:32px">#</th><th>项目名称</th><th>类型</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead>
-                    <tbody>
-                        <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html" target="_blank">松溪县红旗街片区棚户区改造项目—B地块设计方案优化服务采购中标候选人公示</a></td><td><span class="tag tag-win">中标结果</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县强村振兴投资发展有限公司</td><td class="bidder">天津大学建筑设计规划研究总院有限公司</td><td class="money">72.00万</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                        <tr><td>2</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html" target="_blank">2026年松溪县农村供水保障工程--茶平乡施工答疑纪要</a></td><td><span class="tag tag-correction">其他公告</span></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县茶平乡人民政府</td><td>—</td><td>—</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                    </tbody>
-                </table></div>
-            </div>
-        </div>
-
-        <!-- 本周-中标结果 -->
-        <div class="tab-content" id="this-win">
-            <div class="section">
-                <div class="section-header"><div class="section-title">中标结果</div><div class="section-badge">共 1 条</div></div>
-                <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html" target="_blank">松溪县红旗街片区棚户区改造项目—B地块设计方案优化服务采购</a></td><td><span class="tag tag-construction">工程建设</span></td><td>松溪县强村振兴投资发展有限公司</td><td class="bidder">天津大学建筑设计规划研究总院有限公司</td><td class="money">72.00万</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
-                </tbody></table></div>
-            </div>
-        </div>
-
-        <!-- 本周-其他公告 -->
-        <div class="tab-content" id="this-other">
-            <div class="section">
-                <div class="section-header"><div class="section-title">其他公告</div><div class="section-badge">共 1 条</div></div>
-                <div class="table-wrapper"><table><thead><tr><th>#</th><th>项目名称</th><th>类型</th><th>招标人</th><th>日期</th><th>数据来源</th></tr></thead><tbody>
-                    <tr><td>1</td><td class="project-name"><a href="https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html" target="_blank">2026年松溪县农村供水保障工程--茶平乡施工答疑纪要</a></td><td><span class="tag tag-correction">答疑纪要</span></td><td>松溪县茶平乡人民政府</td><td>2026-08-10</td><td><span class="source-tag s-fjzfcg">福建政府采购</span></td></tr>
                 </tbody></table></div>
             </div>
         </div>
