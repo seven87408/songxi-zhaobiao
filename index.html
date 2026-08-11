@@ -3,257 +3,572 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>松溪县招中标信息汇总</title>
+<title>松溪县招中标信息</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:linear-gradient(135deg,#e8f0fe 0%,#f0f4ff 50%,#e6eef8 100%);min-height:100vh;color:#1a2a3a}
-.header{background:linear-gradient(135deg,#0d2137 0%,#1a3a5c 40%,#2563eb 100%);color:#fff;padding:28px 0 22px;text-align:center;position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;top:-60%;left:-10%;width:120%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(59,130,246,0.18) 0%,transparent 60%);pointer-events:none}
-.header h1{font-size:26px;font-weight:700;letter-spacing:2px;position:relative}
-.header .sub{font-size:13px;color:rgba(255,255,255,0.75);margin-top:6px;position:relative}
-.container{max-width:1200px;margin:0 auto;padding:18px 16px 40px}
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px}
-.stat-card{background:#fff;border-radius:12px;padding:18px 14px;text-align:center;cursor:pointer;transition:all .25s;border:1px solid #e2e8f0;position:relative;overflow:hidden}
-.stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,235,0.13)}
-.stat-card.active{border-color:#2563eb;background:linear-gradient(135deg,#eff6ff,#dbeafe)}
-.stat-card .num{font-size:30px;font-weight:800;line-height:1.1}
-.stat-card .label{font-size:12px;color:#64748b;margin-top:4px;font-weight:500}
-.stat-card .icon{font-size:18px;margin-bottom:4px}
-.stat-card:nth-child(1) .num{color:#1e40af}
-.stat-card:nth-child(2) .num{color:#d97706}
-.stat-card:nth-child(3) .num{color:#059669}
-.stat-card:nth-child(4) .num{color:#7c3aed}
-.stat-card:nth-child(5) .num{color:#64748b}
-.tabs{display:flex;gap:0;margin-bottom:0;border-bottom:2px solid #e2e8f0}
-.tab-btn{padding:10px 28px;font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#64748b;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
-.tab-btn:hover{color:#1e40af}
-.tab-btn.active{color:#1e40af;border-bottom-color:#2563eb}
-.sub-tabs{display:flex;gap:0;margin-bottom:16px;margin-top:14px;flex-wrap:wrap}
-.sub-btn{padding:6px 16px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #e2e8f0;background:#fff;color:#475569;border-radius:20px;margin-right:6px;margin-bottom:6px;transition:all .2s}
-.sub-btn:hover{border-color:#2563eb;color:#1e40af}
-.sub-btn.active{background:#1e40af;color:#fff;border-color:#1e40af}
-.tab-content{display:none}
-.tab-content.active{display:block}
-.platform-card{background:#fff;border-radius:12px;margin-bottom:16px;border:1px solid #e2e8f0;overflow:hidden;transition:box-shadow .2s}
-.platform-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
-.platform-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer;user-select:none}
-.platform-name{font-size:15px;font-weight:700;color:#1e40af;display:flex;align-items:center;gap:8px}
-.platform-count{font-size:12px;color:#94a3b8;background:#f1f5f9;padding:2px 10px;border-radius:10px;font-weight:600}
-.platform-arrow{font-size:12px;color:#94a3b8;transition:transform .25s}
-.platform-card.open .platform-arrow{transform:rotate(180deg)}
-.platform-body{display:none;padding:0 20px 16px}
-.platform-card.open .platform-body{display:block}
-.data-table{width:100%;border-collapse:collapse;font-size:13px}
-.data-table th{background:#f8fafc;color:#475569;font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid #e2e8f0;font-size:12px;white-space:nowrap}
-.data-table td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;line-height:1.6}
-.data-table tr:hover td{background:#f8fafc}
-.data-table .idx{color:#94a3b8;font-weight:600;width:36px;text-align:center}
-.project-name{color:#1e3a5f;font-weight:600;max-width:420px}
-.project-name a{color:#1e40af;text-decoration:none;transition:color .15s}
-.project-name a:hover{color:#2563eb;text-decoration:underline}
-.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;white-space:nowrap}
-.tag-zb{background:#fef3c7;color:#92400e}
-.tag-zb2{background:#d1fae5;color:#065f46}
-.tag-ht{background:#ede9fe;color:#5b21b6}
-.tag-other{background:#f1f5f9;color:#475569}
-.tag-cgyx{background:#fce7f3;color:#9d174d}
-.date-cell{color:#64748b;white-space:nowrap;font-weight:500}
-.footer{text-align:center;padding:20px;color:#94a3b8;font-size:12px;border-top:1px solid #e2e8f0;margin-top:30px}
-.footer a{color:#64748b;text-decoration:none}
-.empty-state{text-align:center;padding:40px 20px;color:#94a3b8;font-size:14px}
+:root{--primary:#1a5276;--primary-light:#d4e6f1;--accent:#c0392b;--accent2:#e74c3c;--bg:#f8f9fa;--white:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#dce1e5;--shadow:0 2px 12px rgba(0,0,0,.08);--radius:6px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px 16px}
+
+/* Header */
+.header{background:linear-gradient(135deg,var(--primary) 0%,#2980b9 100%);color:#fff;padding:28px 0;margin-bottom:24px;border-radius:0 0 20px 20px;box-shadow:0 4px 20px rgba(26,82,118,.25)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header h1{font-size:22px;font-weight:700;display:flex;align-items:center;gap:10px}
+.header h1 .icon{width:36px;height:36px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.header .meta{font-size:13px;opacity:.85;text-align:right}
+.header .meta span{display:block}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--white);border-radius:var(--radius);padding:16px;border:1px solid var(--border);text-align:center;transition:transform .15s,box-shadow .15s}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.stat-val{font-size:28px;font-weight:700;color:var(--primary)}
+.stat-val.red{color:var(--accent)}
+.stat-val.green{color:#27ae60}
+.stat-val.orange{color:#e67e22}
+.stat-val.blue{color:#2980b9}
+.stat-val.purple{color:#8e44ad}
+.stat-val.teal{color:#1abc9c}
+.stat-label{font-size:12px;color:var(--text-light);margin-top:2px}
+
+/* Filter Bar */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.filter-btn{border:1px solid var(--border);background:var(--white);padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:all .15s;color:var(--text)}
+.filter-btn:hover,.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.search-input{border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;outline:none;width:200px;transition:border-color .15s}
+.search-input:focus{border-color:var(--primary)}
+.filter-bar .spacer{flex:1}
+
+/* Table */
+.table-wrap{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--primary);color:#fff;font-size:12px;font-weight:600;padding:10px 12px;text-align:left;white-space:nowrap;position:sticky;top:0;z-index:1}
+thead th:first-child{border-radius:0}
+tbody td{padding:10px 12px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:hover{background:#f0f6fb}
+.project-name{font-weight:600;color:var(--primary);cursor:pointer;max-width:320px;display:block;line-height:1.4}
+.project-name:hover{text-decoration:underline}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
+.badge-zb{background:#eaf2e3;color:#27ae60}
+.badge-zbgs{background:#fef5e7;color:#e67e22}
+.badge-zbtg{background:#d4e6f1;color:#1a5276}
+.badge-lb{background:#fbeee6;color:#c0392b}
+.badge-cs{background:#f5eef8;color:#8e44ad}
+.badge-ht{background:#e8f8f5;color:#1abc9c}
+.badge-bg{background:#fff3cd;color:#856404}
+.tag-type{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:500;margin-left:4px}
+.tag-type.gc{background:#eaf2e3;color:#27ae60}
+.tag-type.zf{background:#d4e6f1;color:#1a5276}
+.tag-type.qt{background:#f5eef8;color:#8e44ad}
+
+/* Expandable detail row */
+.detail-row{display:none}
+.detail-row.open{display:table-row}
+.detail-cell{padding:12px 16px;background:#fafbfc;border-bottom:1px solid var(--border)}
+.detail-content{max-width:800px;font-size:12px;color:var(--text-light);line-height:1.8}
+.detail-content strong{color:var(--text);font-weight:600}
+.detail-content a{color:var(--primary);text-decoration:none}
+.detail-content a:hover{text-decoration:underline}
+
+/* Footer */
+.footer{text-align:center;padding:20px;font-size:12px;color:var(--text-light);margin-top:32px}
+.footer a{color:var(--primary);text-decoration:none}
+
+/* Responsive */
 @media(max-width:768px){
-.stats{grid-template-columns:repeat(3,1fr);gap:10px}
-.stat-card .num{font-size:24px}
-.container{padding:12px 10px 30px}
-.header h1{font-size:20px}
+  .header-inner{flex-direction:column;text-align:center}
+  .header .meta{text-align:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .search-input{width:100%}
+  .filter-bar{flex-direction:column}
+  table{font-size:12px}
+  thead th,tbody td{padding:6px 8px}
+  .project-name{max-width:180px}
 }
+
+/* New tag animation */
+.new-tag{background:var(--accent2);color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;animation:pulse-new 2s infinite}
+@keyframes pulse-new{0%,100%{opacity:1}50%{opacity:.5}}
 </style>
 </head>
 <body>
+
 <div class="header">
-<h1>松溪县招中标信息汇总</h1>
-<div class="sub">数据来源：6大招标平台 | 更新时间：2026年8月11日 | 每日10/12/16/18点自动更新</div>
+  <div class="header-inner">
+    <h1><span class="icon">&#x1F3DB;</span>松溪县招中标信息</h1>
+    <div class="meta">
+      <span>数据来源：南平市公共资源交易中心 / 中国政府采购网</span>
+      <span>更新日期：2026-08-11 | 每日10/12/16/18点自动采集</span>
+    </div>
+  </div>
 </div>
+
 <div class="container">
-<div class="stats">
-<div class="stat-card" onclick="filterByCategory('all')">
-<div class="icon">&#128202;</div>
-<div class="num">21</div>
-<div class="label">全部项目</div>
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><div class="stat-val" id="s-total">0</div><div class="stat-label">信息总数</div></div>
+    <div class="stat-card"><div class="stat-val blue" id="s-zbtg">0</div><div class="stat-label">招标公告</div></div>
+    <div class="stat-card"><div class="stat-val green" id="s-zb">0</div><div class="stat-label">中标公示</div></div>
+    <div class="stat-card"><div class="stat-val orange" id="s-zbgs">0</div><div class="stat-label">中标候选人</div></div>
+    <div class="stat-card"><div class="stat-val teal" id="s-ht">0</div><div class="stat-label">合同备案</div></div>
+    <div class="stat-card"><div class="stat-val purple" id="s-cs">0</div><div class="stat-label">磋商/询价</div></div>
+    <div class="stat-card"><div class="stat-val red" id="s-lb">0</div><div class="stat-label">流标/变更</div></div>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="招标公告">招标公告</button>
+    <button class="filter-btn" data-filter="中标公示">中标公示</button>
+    <button class="filter-btn" data-filter="中标候选人">中标候选人</button>
+    <button class="filter-btn" data-filter="合同备案">合同备案</button>
+    <button class="filter-btn" data-filter="磋商/询价">磋商/询价</button>
+    <button class="filter-btn" data-filter="流标">流标</button>
+    <button class="filter-btn" data-filter="变更公告">变更公告</button>
+    <div class="spacer"></div>
+    <input type="text" class="search-input" id="search" placeholder="搜索项目名称/单位...">
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:36px">#</th>
+          <th>项目名称</th>
+          <th>类型</th>
+          <th>招标/采购人</th>
+          <th>中标单位</th>
+          <th>金额</th>
+          <th>发布日期</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
 </div>
-<div class="stat-card" onclick="filterByCategory('招标公告')">
-<div class="icon">&#128221;</div>
-<div class="num">9</div>
-<div class="label">招标公告</div>
-</div>
-<div class="stat-card" onclick="filterByCategory('中标结果')">
-<div class="icon">&#127942;</div>
-<div class="num">7</div>
-<div class="label">中标结果</div>
-</div>
-<div class="stat-card" onclick="filterByCategory('合同备案')">
-<div class="icon">&#128196;</div>
-<div class="num">1</div>
-<div class="label">合同备案</div>
-</div>
-<div class="stat-card" onclick="filterByCategory('其他公告')">
-<div class="icon">&#128214;</div>
-<div class="num">4</div>
-<div class="label">其他公告</div>
-</div>
-</div>
-<div class="tabs">
-<button class="tab-btn active" onclick="switchTab('all')">全部数据</button>
-<button class="tab-btn" onclick="switchTab('thisweek')">本周</button>
-<button class="tab-btn" onclick="switchTab('lastweek')">上周</button>
-</div>
-<div class="tab-content active" id="tab-all">
-<div class="sub-tabs" id="subtabs-all">
-<button class="sub-btn active" onclick="filterSub('all','all')">全部项目</button>
-<button class="sub-btn" onclick="filterSub('all','招标公告')">招标公告</button>
-<button class="sub-btn" onclick="filterSub('all','中标结果')">中标结果</button>
-<button class="sub-btn" onclick="filterSub('all','合同备案')">合同备案</button>
-<button class="sub-btn" onclick="filterSub('all','其他公告')">其他公告</button>
-</div>
-<div id="data-all"></div>
-</div>
-<div class="tab-content" id="tab-thisweek">
-<div class="sub-tabs" id="subtabs-thisweek">
-<button class="sub-btn active" onclick="filterSub('thisweek','all')">全部项目</button>
-<button class="sub-btn" onclick="filterSub('thisweek','中标结果')">中标结果</button>
-</div>
-<div id="data-thisweek"></div>
-</div>
-<div class="tab-content" id="tab-lastweek">
-<div class="sub-tabs" id="subtabs-lastweek">
-<button class="sub-btn active" onclick="filterSub('lastweek','all')">全部项目</button>
-<button class="sub-btn" onclick="filterSub('lastweek','招标公告')">招标公告</button>
-<button class="sub-btn" onclick="filterSub('lastweek','中标结果')">中标结果</button>
-<button class="sub-btn" onclick="filterSub('lastweek','合同备案')">合同备案</button>
-<button class="sub-btn" onclick="filterSub('lastweek','其他公告')">其他公告</button>
-</div>
-<div id="data-lastweek"></div>
-</div>
-</div>
+
 <div class="footer">
-松溪县招中标信息汇总 | 数据采集自6大招标平台 | 每日10/12/16/18点自动更新<br>
-<a href="https://seven87408.github.io/songxi-zhaobiao/" target="_blank">https://seven87408.github.io/songxi-zhaobiao/</a>
+  数据来源于南平市公共资源交易中心 &amp; 中国政府采购网 | 仅供信息参考，以官方发布为准<br>
+  <a href="https://ggzy.np.gov.cn/sx/" target="_blank">松溪县公共资源交易中心</a> | <a href="https://seven87408.github.io/songxi-zhaobiao/" target="_blank">在线访问</a>
 </div>
+
 <script>
-var allData=[
-{date:"2026-08-11",name:"松溪县重点村庄生活污水提升治理项目(一期)设计方案优化服务采购中标候选人公示",category:"中标结果",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260811/ff6d6dcb-3af8-4405-a99e-12b92cb4b57e.html",week:"thisweek"},
-{date:"2026-08-04",name:"松溪县旧县园长滩平周边地块雨污管网改造提升工程投标邀请书",category:"招标公告",source:"千里马招标网",url:"https://www.qianlima.com/common/agents_info.jsp?id=5642245",week:"lastweek"},
-{date:"2026-08-04",name:"松溪县老旧小区二期改造及配套基础设施提升工程—古城路片区环卫设施提升工程招标公告",category:"招标公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/jsgc/010001/20260804/2ddaf401-7e01-48d8-ab41-eec216cbfee5.html",week:"lastweek"},
-{date:"2026-08-04",name:"南平市烟草公司松溪分公司2026年叉车采购项目(四次)公开招标公告",category:"招标公告",source:"千里马招标网",url:"http://fj.tobacco.gov.cn/np/gsgg/202608/t20260804_268524.htm",week:"lastweek"},
-{date:"2026-08-04",name:"松溪县医院医疗设备采购项目结果公告(采购包1、2)",category:"中标结果",source:"中国政府采购网",url:"http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202608/t20260804_27065905.htm",week:"lastweek"},
-{date:"2026-08-04",name:"松溪县防汛物资采购项目合同公告",category:"合同备案",source:"千里马招标网",url:"https://www.qianlima.com/common/agents_info.jsp?id=37596028",week:"lastweek"},
-{date:"2026-08-04",name:"南平市松溪县\u201c百年蔗\u201d生态产品园区—1#、4#原材料检测预成交结果公示",category:"中标结果",source:"中国招标网",url:"https://www.chinabidding.cn/zbgs/U-vzsVAOa.html",week:"lastweek"},
-{date:"2026-08-05",name:"松溪县第三中学新教学楼搬迁设施设备采购(安防及广播系统、电脑等)公开招标公告",category:"招标公告",source:"中国政府采购网",url:"http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202608/t20260805_27072625.htm",week:"lastweek"},
-{date:"2026-08-05",name:"无纸化及移动办公系统建设项目结果公告(采购包1)",category:"中标结果",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html",week:"lastweek"},
-{date:"2026-08-06",name:"松溪县城区雨污分流第七期建设项目(城区零星片区)中标候选人(暨中标结果公示)重新发布",category:"中标结果",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/jsgc/010002/20260806/dc4fe64d-ceb3-4521-80b5-d518462aed68.html",week:"lastweek"},
-{date:"2026-08-06",name:"松溪一中设施设备采购(实验室设备更新、班班通及课桌椅等)询价公告",category:"招标公告",source:"中国政府采购网",url:"http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27086923.htm",week:"lastweek"},
-{date:"2026-08-06",name:"松溪一中设施设备采购(小型报告厅设备)询价公告",category:"招标公告",source:"中国政府采购网",url:"http://www.ccgp.gov.cn/cggg/dfgg/xjgg/202608/t20260806_27085072.htm",week:"lastweek"},
-{date:"2026-08-06",name:"松溪县综治中心建设项目(勘察、设计)采购公告",category:"招标公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html",week:"lastweek"},
-{date:"2026-08-07",name:"松溪县三农产业孵化基地项目(二期)初步设计及概算与勘察招标公告",category:"招标公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/jsgc/010001/20260807/d7f91ab6-6b6e-40a8-927f-35d81dae062c.html",week:"lastweek"},
-{date:"2026-08-07",name:"2026年松溪县农村供水保障工程—茶平乡施工投标邀请书",category:"招标公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html",week:"lastweek"},
-{date:"2026-08-07",name:"南平市松溪县\u201c百年蔗\u201d生态产品园区—1#、4#监理(重新发布)中标结果公示",category:"中标结果",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html",week:"lastweek"},
-{date:"2026-08-03",name:"南平市松溪县\u201c百年蔗\u201d生态产品园区—1#、4#监理(重新发布)预成交结果公告",category:"中标结果",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260803/444f01c8-1fb8-42b4-b646-dbc5bf41aaef.html",week:"lastweek"},
-{date:"2026-08-03",name:"松溪县新铺溪流域水生态环境综合治理工程项目—(二期)补充通知(变更公告)",category:"其他公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html",week:"lastweek"},
-{date:"2026-08-10",name:"松溪县红旗街片区棚户区改造项目(B地块)设计方案优化服务采购预成交结果公告",category:"中标结果",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html",week:"lastweek"},
-{date:"2026-08-10",name:"2026年松溪县农村供水保障工程—茶平乡施工投标邀请书",category:"招标公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html",week:"lastweek"},
-{date:"2026-08-10",name:"松溪县地质灾害隐患点和风险区更新调查项目技术服务竞争性磋商公告",category:"其他公告",source:"福建省政府采购网",url:"https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260810/FJS-2001551202608104763771.html",week:"lastweek"}
+var DATA = [
+  // ===== 2026年8月11日 =====
+  {
+    name:'松溪县重点村庄生活污水提升治理项目（一期）设计方案优化服务采购',
+    type:'中标候选人',
+    category:'zf',
+    owner:'松溪县城市建设综合开发公司',
+    winner:'天津大学建筑设计规划研究总院有限公司',
+    amount:'42.00万元',
+    date:'2026-08-11',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260811/ff6d6dcb-3af8-4405-a99e-12b92cb4b57e.html',
+    detail:'招标编号：E350724202000106001001 | 第一中标候选人：天津大学建筑设计规划研究总院有限公司，投标报价42.00万元，综合得分95.51分；第二候选人：中创设计咨询集团有限公司，39.00万元，76.69分；第三候选人：中凡国际工程设计有限公司，44.00万元，74.38分。'
+  },
+  {
+    name:'松溪县郑墩镇张屯村际下岩角垅机耕路硬化项目（二次）合同公示',
+    type:'合同备案',
+    category:'qt',
+    owner:'松溪县郑墩镇张屯村',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-11',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013006/',
+    detail:'项目编号：郑墩镇张屯村际下岩角垅机耕路硬化项目（二次）| 合同公示阶段'
+  },
+  {
+    name:'松溪县供销社资产经营管理中心解放街土产公司门市二楼店面招租（四次）',
+    type:'招标公告',
+    category:'qt',
+    owner:'松溪县供销社',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-11',
+    url:'https://ggzy.np.gov.cn/sx/gycqjy/',
+    detail:'产权交易 | 第四次招租公告，前三均流标 | 交易方式：挂牌出让'
+  },
+  // ===== 2026年8月10日 =====
+  {
+    name:'松溪县红旗街片区棚户区改造项目—A、B地块（B地块）设计方案优化服务采购',
+    type:'中标候选人',
+    category:'zf',
+    owner:'松溪县强村振兴投资发展有限公司',
+    winner:'天津大学建筑设计规划研究总院有限公司',
+    amount:'72.00万元',
+    date:'2026-08-10',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html',
+    detail:'招标编号：CTSX[2026]招084 | 第一中标候选人：天津大学建筑设计规划研究总院有限公司，投标报价72.00万元；第二候选人：浙江地标设计集团有限公司，62.00万元；第三候选人：中创设计咨询集团有限公司，64.00万元。采购方式：公开采购，评标办法：综合评分法。'
+  },
+  {
+    name:'松溪县地质灾害隐患点和风险区更新调查项目技术服务',
+    type:'磋商/询价',
+    category:'zf',
+    owner:'松溪县自然资源局',
+    winner:'待定',
+    amount:'--',
+    date:'2026-08-10',
+    url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260810/FJS-2001551202608104763771.html',
+    detail:'项目编号：[350724]RSGS[CS]2026002 | 采购方式：竞争性磋商 | 代理机构：福建瑞晟建设工程造价咨询有限公司'
+  },
+  {
+    name:'2026年松溪县农村供水保障工程--茶平乡施工投标邀请书（补充通知）',
+    type:'变更公告',
+    category:'gc',
+    owner:'松溪县茶平乡人民政府',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-10',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html',
+    detail:'招标方式：邀请招标 | 被邀请单位：福建省众源建设工程有限公司、福建六松建设有限公司、福建旺鑫水电工程有限公司等5家 | 本公告为补充通知'
+  },
+  // ===== 2026年8月7日 =====
+  {
+    name:'南平市松溪县"百年蔗"生态产品园区公共服务设施建设项目——一期—1#、4#监理（重新发布）',
+    type:'中标公示',
+    category:'gc',
+    owner:'松溪县城市建设发展有限公司',
+    winner:'福建兴昌达建设有限公司',
+    amount:'12.40万元',
+    date:'2026-08-07',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013005/20260807/2d566e3d-8cc6-442b-8692-7c31e8a49f79.html',
+    detail:'项目编号：CTSX[2026]招083 | 中标供应商：福建兴昌达建设有限公司，地址：福建省龙岩市武平县平川街道沿河东路99-5号501室 | 代理机构：福建程泰建设管理有限公司'
+  },
+  {
+    name:'松溪县三农产业孵化基地项目（二期）初步设计及概算与勘察',
+    type:'招标公告',
+    category:'gc',
+    owner:'福建松溪开发区经营管理有限公司',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-07',
+    url:'https://ggzy.np.gov.cn/sx/jsgc/010001/20260807/d7f91ab6-6b6e-40a8-927f-35d81dae062c.html',
+    detail:'招标编号：E3507240701100075005 | 投标截止时间：2026-09-01 08:30 | 批准文号：闽发改备[2025]H090010号 | 建设资金来自建设单位多渠道筹措'
+  },
+  {
+    name:'2026年松溪县农村供水保障工程--茶平乡施工投标邀请书',
+    type:'招标公告',
+    category:'gc',
+    owner:'松溪县茶平乡人民政府',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-07',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html',
+    detail:'招标方式：邀请招标 | 批准文号：松溪县人民政府专题会议纪要〔2026〕66号 | 被邀请单位：福建省众源建设工程有限公司、福建六松建设有限公司、福建旺鑫水电工程有限公司、福建鸿鑫水电建筑工程有限公司、福建利洋建设有限公司'
+  },
+  // ===== 2026年8月6日 =====
+  {
+    name:'松溪县城区雨污分流第七期建设项目（城区零星片区）',
+    type:'中标候选人',
+    category:'gc',
+    owner:'松溪县城市建设综合开发公司',
+    winner:'福建省侨达建筑有限公司',
+    amount:'499.54万元',
+    date:'2026-08-06',
+    url:'https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/15cf2435-d548-4207-b73f-9a93132984cb.html',
+    detail:'招标编号：E3507240701100033008 | 招标控制价：552.12万元，发包价499.54万元 | 中标人：福建省侨达建筑有限公司，项目负责人：郭丽娟 | 采用评定分离方式，票决法随机抽取确定。工期180日历天。'
+  },
+  {
+    name:'松溪一中设施设备采购（小型报告厅设备）',
+    type:'磋商/询价',
+    category:'zf',
+    owner:'福建省松溪第一中学',
+    winner:'待定',
+    amount:'--',
+    date:'2026-08-06',
+    url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html',
+    detail:'项目编号：[350724]HCDL[XJ]2026003 | 采购方式：询价 | 代理机构：福建宏昌工程项目管理有限公司'
+  },
+  {
+    name:'松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）',
+    type:'磋商/询价',
+    category:'zf',
+    owner:'福建省松溪第一中学',
+    winner:'待定',
+    amount:'--',
+    date:'2026-08-06',
+    url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html',
+    detail:'项目编号：[350724]PG[XJ]2026001 | 采购方式：询价 | 代理机构：福建南平宥利工程项目管理有限公司'
+  },
+  {
+    name:'高屯自然村道路改造及林屯村基础设施提升工程',
+    type:'招标公告',
+    category:'gc',
+    owner:'郑墩镇人民政府',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-06',
+    url:'https://ggzy.np.gov.cn/sx/jsgc/010001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html',
+    detail:'招标方式：邀请招标 | 审批文号：郑复[2026]5号 | 被邀请单位：福建鼎湛建设有限公司、南平鸿睿建设工程有限公司等5家'
+  },
+  {
+    name:'松溪县综治中心建设项目（勘察、设计）',
+    type:'招标公告',
+    category:'gc',
+    owner:'松溪县城市建设综合开发公司',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-06',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html',
+    detail:'采购方式：公开采购 | 代理机构：福建程泰建设管理有限公司 | 资金来源：县财政统筹 | 采购内容：勘察、设计服务'
+  },
+  // ===== 2026年8月5日 =====
+  {
+    name:'松溪县第三中学新教学楼搬迁设施设备采购（安防及广播系统、电脑等）',
+    type:'招标公告',
+    category:'zf',
+    owner:'松溪县第三中学',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-05',
+    url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html',
+    detail:'项目编号：[350724]FJCT[GK]2026003 | 采购方式：公开招标 | 代理机构：福建程泰建设管理有限公司'
+  },
+  {
+    name:'无纸化及移动办公系统建设项目',
+    type:'中标公示',
+    category:'zf',
+    owner:'松溪县人民政府办公室',
+    winner:'中国电信股份有限公司南平分公司',
+    amount:'263.00万元',
+    date:'2026-08-05',
+    url:'https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260805/FJS-2001553202608052818714.html',
+    detail:'项目编号：[350724]FJCT[GK]2026002 | 中标供应商：中国电信股份有限公司南平分公司，中标金额263.00万元，评审总得分88.17分 | 品牌包括保伦电子、华为、榕基等'
+  },
+  // ===== 2026年8月4日 =====
+  {
+    name:'松溪县医院医疗设备采购项目',
+    type:'中标公示',
+    category:'zf',
+    owner:'松溪县医院',
+    winner:'福建华恒医疗器械有限公司',
+    amount:'87.32万元',
+    date:'2026-08-04',
+    url:'https://ggzy.np.gov.cn/sx/zfjzcg/009003/20260804/FJS-2001553202608040410747.html',
+    detail:'项目编号：[350724]FJLXZB[GK]2026002 | 采购包1中标：福建华恒医疗器械有限公司，31.04万元，含牙科综合治疗台等；采购包2中标：福建华恒医疗器械有限公司，56.28万元，含血液透析滤过机等 | 代理机构：福建龙翔招标代理有限公司'
+  },
+  {
+    name:'松溪县老旧小区二期改造及配套基础设施提升工程--古城路片区环卫设施提升工程',
+    type:'招标公告',
+    category:'gc',
+    owner:'松溪县住房和城乡建设局',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-04',
+    url:'https://ggzy.np.gov.cn/sx/jsgc/010001/20260804/2ddaf401-7e01-48d8-ab41-eec216cbfee5.html',
+    detail:'审批文号：松发科[2026]审批65号 | 建设单位：松溪县住房和城乡建设局'
+  },
+  // ===== 2026年8月3日 =====
+  {
+    name:'茶平乡惠民公共空间改造提升工程投标邀请书',
+    type:'招标公告',
+    category:'gc',
+    owner:'茶平乡人民政府',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-03',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013001/',
+    detail:'招标方式：邀请招标 | 建设地点：松溪县茶平乡 | 建设内容及规模：公共空间改造提升'
+  },
+  {
+    name:'松溪县新铺溪流域水生态环境综合治理工程项目（二期）[补充通知]',
+    type:'变更公告',
+    category:'gc',
+    owner:'--',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-03',
+    url:'https://ggzy.np.gov.cn/sx/jsgc/010002/20260803/a55fd9f5-a6c8-40c8-a109-eedbcf45e67f.html',
+    detail:'招标编号：E3507240701100081002 | 发布补充通知（一），涉及工期延误条款等内容修改'
+  },
+  {
+    name:'松溪县老旧小区二期改造及配套基础设施提升工程——河东片区改造项目合同备案',
+    type:'合同备案',
+    category:'gc',
+    owner:'松溪县住房和城乡建设局',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-03',
+    url:'https://ggzy.np.gov.cn/sx/jsgc/010006/',
+    detail:'合同备案阶段 | 项目编号：松溪县老旧小区二期改造河东片区改造项目'
+  },
+  {
+    name:'松溪县茶平供销社改造提升项目合同公示',
+    type:'合同备案',
+    category:'qt',
+    owner:'松溪县茶平供销社',
+    winner:'--',
+    amount:'--',
+    date:'2026-08-03',
+    url:'https://ggzy.np.gov.cn/sx/qyzbxx/013006/',
+    detail:'其他项目合同公示 | 项目名称：松溪县茶平供销社改造提升项目'
+  },
+  // ===== 2026年7月底 =====
+  {
+    name:'松溪县郑墩镇万前-梅口河道疏浚整治工程砂石料招标（二次）',
+    type:'流标',
+    category:'qt',
+    owner:'松溪县郑墩镇人民政府',
+    winner:'--',
+    amount:'--',
+    date:'2026-07-31',
+    url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',
+    detail:'产权交易 | 二次招标流标'
+  },
+  {
+    name:'南平市烟草公司松溪分公司2026年叉车采购项目（重新招标）',
+    type:'流标',
+    category:'zf',
+    owner:'南平市烟草公司松溪分公司',
+    winner:'--',
+    amount:'45.22万元',
+    date:'2026-07-29',
+    url:'http://fj.tobacco.gov.cn/np/gsgg/202608/t20260804_268525.htm',
+    detail:'招标编号：B202601BA2001857716076 | 项目金额预计约45.2225万元 | 重新招标后仍流标'
+  },
+  {
+    name:'县城投运营公司国有资产沿街店面',
+    type:'中标公示',
+    category:'qt',
+    owner:'松溪县城投运营公司',
+    winner:'--',
+    amount:'--',
+    date:'2026-07-29',
+    url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',
+    detail:'产权交易 | 沿街店面中标结果公示'
+  },
+  {
+    name:'松溪县供销社资产经营管理中心解放街土产公司门市二楼店面招租（三次）',
+    type:'流标',
+    category:'qt',
+    owner:'松溪县供销社',
+    winner:'--',
+    amount:'--',
+    date:'2026-07-28',
+    url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',
+    detail:'产权交易 | 三次招租流标公告，现已发布第四次招租'
+  }
 ];
-var platformMap={
-"福建省政府采购网":"福建省政府采购网 (ggzy.np.gov.cn)",
-"中国政府采购网":"中国政府采购网 (ccgp.gov.cn)",
-"千里马招标网":"千里马招标网 (qianlima.com)",
-"中国招标网":"中国招标网 (chinabidding.cn)",
-"工采通":"工采通 (gongcaitong.cn)",
-"中国招标投标公共服务平台":"中国招标投标公共服务平台 (cebpubservice.com)"
-};
-var currentTab='all';
-var currentCategory={all:'all',thisweek:'all',lastweek:'all'};
-function getTagClass(cat){
-if(cat==='招标公告')return'tag tag-zb';
-if(cat==='中标结果')return'tag tag-zb2';
-if(cat==='合同备案')return'tag tag-ht';
-if(cat==='采购意向')return'tag tag-cgyx';
-return'tag tag-other';
+
+var currentFilter = 'all';
+var searchKw = '';
+
+function getBadgeClass(type){
+  switch(type){
+    case '中标公示': return 'badge-zb';
+    case '中标候选人': return 'badge-zbgs';
+    case '招标公告': return 'badge-zbtg';
+    case '流标': return 'badge-lb';
+    case '磋商/询价': return 'badge-cs';
+    case '合同备案': return 'badge-ht';
+    case '变更公告': return 'badge-bg';
+    default: return '';
+  }
 }
-function getFilteredData(week,category){
-var items=allData;
-if(week!=='all')items=items.filter(function(d){return d.week===week});
-if(category&&category!=='all')items=items.filter(function(d){return d.category===category});
-return items;
+function getCategoryLabel(c){
+  switch(c){
+    case 'gc': return '工程';
+    case 'zf': return '政采';
+    case 'qt': return '其他';
+    default: return '';
+  }
 }
-function renderData(containerId,items){
-var container=document.getElementById(containerId);
-if(!items.length){container.innerHTML='<div class="empty-state">暂无数据</div>';return;}
-var platforms={};
-items.forEach(function(item){var pk=item.source;if(!platforms[pk])platforms[pk]=[];platforms[pk].push(item);});
-var html='';
-var pKeys=Object.keys(platforms).sort(function(a,b){return platforms[b].length-platforms[a].length});
-pKeys.forEach(function(pk){
-var pItems=platforms[pk];
-var pLabel=platformMap[pk]||pk;
-var cardId=containerId+'-'+pk.replace(/[^a-zA-Z0-9]/g,'x');
-html+='<div class="platform-card open" id="'+cardId+'">';
-html+='<div class="platform-header" onclick="toggleCard(\''+cardId+'\')">';
-html+='<span class="platform-name">'+pLabel+'</span>';
-html+='<span class="platform-count">'+pItems.length+'条</span>';
-html+='<span class="platform-arrow">&#9660;</span>';
-html+='</div>';
-html+='<div class="platform-body">';
-html+='<table class="data-table"><thead><tr><th>序号</th><th>日期</th><th>项目名称</th><th>类型</th></tr></thead><tbody>';
-pItems.forEach(function(item,i){
-html+='<tr>';
-html+='<td class="idx">'+(i+1)+'</td>';
-html+='<td class="date-cell">'+item.date+'</td>';
-html+='<td class="project-name"><a href="'+item.url+'" target="_blank" rel="noopener">'+item.name+'</a></td>';
-html+='<td><span class="'+getTagClass(item.category)+'">'+item.category+'</span></td>';
-html+='</tr>';
+function getCategoryClass(c){
+  switch(c){
+    case 'gc': return 'gc';
+    case 'zf': return 'zf';
+    case 'qt': return 'qt';
+    default: return '';
+  }
+}
+
+function render(){
+  var filtered = DATA.filter(function(d){
+    if(currentFilter !== 'all'){
+      if(d.type !== currentFilter) return false;
+    }
+    if(searchKw){
+      var kw = searchKw.toLowerCase();
+      if(d.name.toLowerCase().indexOf(kw) < 0 && d.owner.toLowerCase().indexOf(kw) < 0 && (d.winner||'').toLowerCase().indexOf(kw) < 0) return false;
+    }
+    return true;
+  });
+
+  // Update stats based on all data
+  var zb = DATA.filter(function(d){return d.type==='中标公示'}).length;
+  var zbgs = DATA.filter(function(d){return d.type==='中标候选人'}).length;
+  var zbtg = DATA.filter(function(d){return d.type==='招标公告'}).length;
+  var lb = DATA.filter(function(d){return d.type==='流标'}).length;
+  var bg = DATA.filter(function(d){return d.type==='变更公告'}).length;
+  var ht = DATA.filter(function(d){return d.type==='合同备案'}).length;
+  var cs = DATA.filter(function(d){return d.type==='磋商/询价'}).length;
+  document.getElementById('s-total').textContent = DATA.length;
+  document.getElementById('s-zb').textContent = zb;
+  document.getElementById('s-zbgs').textContent = zbgs;
+  document.getElementById('s-zbtg').textContent = zbtg;
+  document.getElementById('s-ht').textContent = ht;
+  document.getElementById('s-cs').textContent = cs;
+  document.getElementById('s-lb').textContent = lb + bg;
+
+  var html = '';
+  for(var i = 0; i < filtered.length; i++){
+    var d = filtered[i];
+    var isNew = (d.date >= '2026-08-10');
+    html += '<tr onclick="toggleDetail('+i+')">';
+    html += '<td>'+(i+1)+'</td>';
+    html += '<td><span class="project-name">'+escHtml(d.name)+'</span>'+(isNew?'<span class="new-tag">NEW</span>':'')+'</td>';
+    html += '<td><span class="badge '+getBadgeClass(d.type)+'">'+escHtml(d.type)+'</span> <span class="tag-type '+getCategoryClass(d.category)+'">'+getCategoryLabel(d.category)+'</span></td>';
+    html += '<td>'+escHtml(d.owner)+'</td>';
+    html += '<td>'+(d.winner && d.winner !== '--' && d.winner !== '待定' ? escHtml(d.winner) : '<span style="color:var(--text-light)">--</span>')+'</td>';
+    html += '<td style="white-space:nowrap">'+escHtml(d.amount)+'</td>';
+    html += '<td style="white-space:nowrap">'+d.date.slice(5)+'</td>';
+    html += '</tr>';
+    html += '<tr class="detail-row" id="detail-'+i+'"><td colspan="7" class="detail-cell"><div class="detail-content">';
+    html += '<strong>项目名称：</strong>'+escHtml(d.name)+'<br>';
+    html += '<strong>发布日期：</strong>'+d.date+'<br>';
+    if(d.detail) html += '<strong>详情：</strong>'+escHtml(d.detail)+'<br>';
+    if(d.url) html += '<a href="'+d.url+'" target="_blank">查看原文 &rarr;</a>';
+    html += '</div></td></tr>';
+  }
+  if(!filtered.length){
+    html = '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text-light)">暂无匹配数据</td></tr>';
+  }
+  document.getElementById('tbody').innerHTML = html;
+}
+
+function toggleDetail(idx){
+  var row = document.getElementById('detail-'+idx);
+  if(row){
+    row.classList.toggle('open');
+  }
+}
+
+function escHtml(s){
+  if(!s) return '';
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Bind filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+    this.classList.add('active');
+    currentFilter = this.getAttribute('data-filter');
+    render();
+  });
 });
-html+='</tbody></table></div></div>';
+
+// Bind search
+document.getElementById('search').addEventListener('input', function(){
+  searchKw = this.value.trim();
+  render();
 });
-container.innerHTML=html;
-}
-function switchTab(tab){
-currentTab=tab;
-document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
-document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active')});
-document.getElementById('tab-'+tab).classList.add('active');
-event.target.classList.add('active');
-var cat=currentCategory[tab]||'all';
-refreshView(tab,cat);
-}
-function filterSub(tab,category){
-currentCategory[tab]=category;
-var subTabs=document.querySelectorAll('#subtabs-'+tab+' .sub-btn');
-subTabs.forEach(function(b){b.classList.remove('active')});
-event.target.classList.add('active');
-refreshView(tab,category);
-}
-function filterByCategory(cat){
-switchTab('all');
-currentCategory['all']=cat;
-var subTabs=document.querySelectorAll('#subtabs-all .sub-btn');
-subTabs.forEach(function(b){
-b.classList.remove('active');
-if((cat==='all'&&b.textContent==='全部项目')||b.textContent===cat)b.classList.add('active');
-});
-refreshView('all',cat);
-}
-function refreshView(tab,category){
-var items=getFilteredData(tab==='all'?'all':tab,category);
-renderData('data-'+tab,items);
-}
-function toggleCard(id){
-var card=document.getElementById(id);
-if(card)card.classList.toggle('open');
-}
-refreshView('all','all');
-refreshView('thisweek','all');
-refreshView('lastweek','all');
+
+// Initial render
+render();
 </script>
 </body>
 </html>
