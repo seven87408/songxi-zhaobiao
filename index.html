@@ -66,25 +66,17 @@ body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;heig
 .search-input{border:1px solid var(--card-border);border-radius:20px;padding:5px 14px;font-size:12px;outline:none;width:220px;background:rgba(255,255,255,.7);transition:border-color .2s}
 .search-input:focus{border-color:#096dd9}
 
-/* Platform Cards */
-.platform-section{margin-bottom:24px}
+/* Platform Section — matches data table style */
+.platform-section{margin-top:32px}
 .platform-section-title{font-size:14px;font-weight:600;color:#16467a;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.plat-card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
-.plat-card:hover{box-shadow:var(--shadow-hover)}
-.plat-head{padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
-.plat-name{font-size:13px;font-weight:600;color:var(--text)}
-.plat-count{font-size:12px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(9,109,217,.1);color:#096dd9}
-.plat-count.zero{background:rgba(143,168,192,.15);color:var(--text-muted)}
-.plat-arrow{font-size:11px;color:var(--text-muted);transition:transform .2s}
-.plat-card.open .plat-arrow{transform:rotate(180deg)}
-.plat-body{display:none;padding:0 16px 12px}
-.plat-card.open .plat-body{display:block}
-.plat-item{font-size:12px;color:var(--text-light);padding:6px 0;border-top:1px solid rgba(26,58,92,.06);line-height:1.5}
-.plat-item a{color:#096dd9;text-decoration:none}
-.plat-item a:hover{text-decoration:underline}
-.plat-url{font-size:11px;color:var(--text-muted);margin-top:4px}
-.plat-empty{font-size:12px;color:var(--text-muted);padding:8px 0;font-style:italic}
+.plat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.plat-tab{padding:5px 16px;font-size:12px;font-weight:500;color:var(--text-light);background:rgba(255,255,255,.6);border:1px solid var(--card-border);border-radius:20px;cursor:pointer;transition:all .2s}
+.plat-tab:hover{color:var(--text);border-color:rgba(9,109,217,.3)}
+.plat-tab.active{background:#096dd9;color:#fff;border-color:#096dd9}
+.plat-tab .plat-badge{font-size:11px;font-weight:700;margin-left:4px;padding:1px 6px;border-radius:10px;background:rgba(9,109,217,.1);color:#096dd9}
+.plat-tab.active .plat-badge{background:rgba(255,255,255,.25);color:#fff}
+.plat-tab .plat-badge.zero{background:rgba(143,168,192,.15);color:var(--text-muted)}
+.plat-tab.active .plat-badge.zero{background:rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
 
 /* Data Section */
 .data-section{display:none}
@@ -204,10 +196,11 @@ a.project-name{color:#096dd9}
   <!-- Data Sections -->
   <div id="dataArea"></div>
 
-  <!-- Platform Cards (moved to bottom) -->
-  <div class="platform-section" style="margin-top:32px">
+  <!-- Platform Section (table style, same as data) -->
+  <div class="platform-section" id="platSection">
     <div class="platform-section-title">六大平台采集覆盖</div>
-    <div class="platform-grid" id="platformGrid"></div>
+    <div class="plat-tabs" id="platTabs"></div>
+    <div id="platTableArea"></div>
   </div>
 </div>
 
@@ -329,40 +322,68 @@ function renderStats(){
   document.getElementById('s-other').textContent = counts['其他公告'];
 }
 
-// ===================== RENDER PLATFORM CARDS =====================
+// ===================== RENDER PLATFORM TABS+TABLE =====================
+var currentPlat = 'fjzfcg';
+
 function renderPlatforms(){
-  var html = '';
-  PLATFORMS.forEach(function(p,idx){
-    html += '<div class="plat-card" id="plat-'+p.key+'">';
-    html += '<div class="plat-head" onclick="togglePlat(\''+p.key+'\')">';
-    html += '<div>';
-    html += '<div class="plat-name">'+escHtml(p.name)+'</div>';
-    html += '<div class="plat-url">'+escHtml(p.url)+'</div>';
-    html += '</div>';
-    html += '<div style="display:flex;align-items:center;gap:8px">';
-    html += '<span class="plat-count'+(p.count===0?' zero':'')+'">'+p.count+'条</span>';
-    html += '<span class="plat-arrow">&#9662;</span>';
-    html += '</div>';
-    html += '</div>';
-    html += '<div class="plat-body">';
-    if(p.count===0){
-      html += '<div class="plat-empty">未检索到松溪独立数据</div>';
-    } else {
-      p.items.forEach(function(it){
-        html += '<div class="plat-item">';
-        html += '<a href="'+it.url+'" target="_blank">'+escHtml(it.name)+'</a>';
-        html += '<br><span style="color:var(--text-muted)">'+it.date+' | '+escHtml(it.subType)+'</span>';
-        html += '</div>';
-      });
-    }
-    html += '</div></div>';
+  // render tabs
+  var tabHtml = '';
+  PLATFORMS.forEach(function(p){
+    var cls = p.key===currentPlat ? ' active' : '';
+    var badgeCls = p.count===0 ? ' zero' : '';
+    tabHtml += '<button class="plat-tab'+cls+'" onclick="switchPlat(\''+p.key+'\')">'+escHtml(p.name)+'<span class="plat-badge'+badgeCls+'">'+p.count+'条</span></button>';
   });
-  document.getElementById('platformGrid').innerHTML = html;
+  document.getElementById('platTabs').innerHTML = tabHtml;
+  renderPlatTable();
 }
 
-function togglePlat(key){
-  var card = document.getElementById('plat-'+key);
-  if(card) card.classList.toggle('open');
+function switchPlat(key){
+  currentPlat = key;
+  renderPlatforms();
+}
+
+function renderPlatTable(){
+  var p = PLATFORMS.find(function(pl){return pl.key===currentPlat;});
+  if(!p) return;
+  var html = '';
+  if(p.count===0){
+    html = '<div class="table-wrap" style="padding:40px;text-align:center;color:var(--text-muted);font-size:13px">未检索到松溪独立数据</div>';
+  } else {
+    html = '<div class="table-wrap"><table><thead><tr>';
+    html += '<th style="width:36px">#</th><th>项目名称</th><th>类型</th><th>类别</th><th>招标人</th><th>中标人</th><th>金额</th><th>日期</th>';
+    html += '</tr></thead><tbody>';
+    p.items.forEach(function(d,i){
+      var tagCls = TYPE_TAGS[d.subType] || TYPE_TAGS[d.type] || 'tag-other';
+      var hasLink = d.url && d.url.length > 10;
+      html += '<tr onclick="togglePlatDetail(\''+i+'\')" style="cursor:pointer">';
+      html += '<td>'+(i+1)+'</td>';
+      html += '<td>';
+      if(hasLink){ html += '<a class="project-name" href="'+d.url+'" target="_blank" onclick="event.stopPropagation()">'+escHtml(d.name)+'</a>'; }
+      else { html += '<span class="project-name no-link">'+escHtml(d.name)+'</span>'; }
+      html += '</td>';
+      html += '<td><span class="tag '+tagCls+'">'+escHtml(d.subType)+'</span></td>';
+      html += '<td><span class="tag-cat '+CAT_CLASSES[d.category]+'">'+CAT_LABELS[d.category]+'</span></td>';
+      html += '<td>'+escHtml(d.owner)+'</td>';
+      html += '<td>'+(d.winner&&d.winner!=='--'&&d.winner!=='待定'?'<span class="bidder">'+escHtml(d.winner)+'</span>':'<span style="color:var(--text-muted)">--</span>')+'</td>';
+      html += '<td>'+(d.amount&&d.amount!=='--'?'<span class="money">'+escHtml(d.amount)+'</span>':'<span style="color:var(--text-muted)">--</span>')+'</td>';
+      html += '<td class="date-cell">'+d.date.slice(5)+'</td>';
+      html += '</tr>';
+      html += '<tr class="detail-row" id="pdetail-'+i+'"><td colspan="8" class="detail-cell"><div class="detail-content">';
+      html += '<strong>项目名称：</strong>'+escHtml(d.name)+'<br>';
+      html += '<strong>发布日期：</strong>'+d.date+'<br>';
+      html += '<strong>类型：</strong>'+escHtml(d.subType)+' | '+escHtml(d.type)+'<br>';
+      if(d.detail) html += '<strong>详情：</strong>'+escHtml(d.detail)+'<br>';
+      if(hasLink) html += '<a href="'+d.url+'" target="_blank" onclick="event.stopPropagation()">查看原文 &rarr;</a>';
+      html += '</div></td></tr>';
+    });
+    html += '</tbody></table></div>';
+  }
+  document.getElementById('platTableArea').innerHTML = html;
+}
+
+function togglePlatDetail(idx){
+  var row = document.getElementById('pdetail-'+idx);
+  if(row) row.classList.toggle('open');
 }
 
 // ===================== RENDER DATA AREA =====================
