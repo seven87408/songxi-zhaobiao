@@ -13,10 +13,22 @@
   --text:#1a3a5c;--text-light:#5a7a9c;--text-muted:#8fa8c0;
   --shadow:0 2px 16px rgba(26,58,92,.08);--shadow-hover:0 4px 24px rgba(26,58,92,.15);
   --radius:8px;
+  --grid-color:rgba(9,109,217,.05);--dot-color:rgba(26,58,92,.07);
 }
-body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;background:var(--bg-grad);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;position:relative;overflow-x:hidden}
-body::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(9,109,217,.06) 0%,transparent 70%);pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(83,29,171,.05) 0%,transparent 70%);pointer-events:none;z-index:0}
+body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;position:relative;overflow-x:hidden;
+  background:
+    /* 科技网格线 */
+    linear-gradient(var(--grid-color) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-color) 1px,transparent 1px),
+    /* 点阵图案 */
+    radial-gradient(circle,var(--dot-color) 1px,transparent 1px),
+    /* 底层渐变 */
+    var(--bg-grad);
+  background-size:40px 40px,40px 40px,20px 20px,100% 100%;
+  background-position:0 0,0 0,0 0,0 0;
+}
+body::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(9,109,217,.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(83,29,171,.06) 0%,transparent 70%);pointer-events:none;z-index:0}
 .container{max-width:1200px;margin:0 auto;padding:20px 16px;position:relative;z-index:1}
 
 /* Header */
@@ -198,14 +210,14 @@ a.project-name{color:#096dd9}
     <strong>提示：</strong>点击项目名称可跳转至原网页查看详情。每条信息均标注了数据来源平台。页面分为「全部数据」「本周数据」和「上周数据」三个区域，每区域内含子分类Tab。每日10/12/16/18点自动采集并推送更新。
   </div>
 
-  <!-- Platform Cards -->
-  <div class="platform-section">
+  <!-- Data Sections -->
+  <div id="dataArea"></div>
+
+  <!-- Platform Cards (moved to bottom) -->
+  <div class="platform-section" style="margin-top:32px">
     <div class="platform-section-title">六大平台采集覆盖</div>
     <div class="platform-grid" id="platformGrid"></div>
   </div>
-
-  <!-- Data Sections -->
-  <div id="dataArea"></div>
 </div>
 
 <div class="footer">
@@ -222,7 +234,7 @@ var DATA = [
   {name:'松溪县郑墩镇张屯村际下岩角垅机耕路硬化项目（二次）合同公示',type:'合同备案',subType:'合同备案',category:'qt',owner:'松溪县郑墩镇张屯村',winner:'--',amount:'--',date:'2026-08-11',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013006/',detail:'其他项目合同公示阶段。项目编号：郑墩镇张屯村际下岩角垅机耕路硬化项目（二次）。'},
   {name:'松溪县供销社资产经营管理中心解放街土产公司门市二楼店面招租（四次）',type:'招标公告',subType:'招标公告',category:'qt',owner:'松溪县供销社',winner:'--',amount:'--',date:'2026-08-11',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/',detail:'产权交易招标公告。第四次招租，前三均流标。交易方式：挂牌出让。'},
   {name:'松溪县红旗街片区棚户区改造项目—A、B地块（B地块）设计方案优化服务采购',type:'中标结果',subType:'中标候选人',category:'zf',owner:'松溪县强村振兴投资发展有限公司',winner:'天津大学建筑设计规划研究总院有限公司',amount:'72.00万元',date:'2026-08-10',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260810/07f97a08-0da3-4bd7-9cb1-1ec05719607d.html',detail:'招标编号：CTSX[2026]招084。第一中标候选人：天津大学建筑设计规划研究总院有限公司，72.00万元。第二：浙江地标设计集团有限公司，62.00万元。第三：中创设计咨询集团有限公司，64.00万元。'},
-  {name:'松溪县地质灾害隐患点和风险区更新调查项目技术服务',type:'其他公告',subType:'竞争性磋商',category:'zf',owner:'松溪县自然资源局',winner:'待定',amount:'--',date:'2026-08-10',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260810/FJS-2001551202608104763771.html',detail:'项目编号：[350724]RSGS[CS]2026002。采购方式：竞争性磋商。代理机构：福建瑞晟建设工程造价咨询有限公司。同步发布于中国政府采购网。'},
+  {name:'松溪县地质灾害隐患点和风险区更新调查项目技术服务',type:'招标公告',subType:'竞争性磋商',category:'zf',owner:'松溪县自然资源局',winner:'待定',amount:'--',date:'2026-08-10',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260810/FJS-2001551202608104763771.html',detail:'项目编号：[350724]RSGS[CS]2026002。采购方式：竞争性磋商。代理机构：福建瑞晟建设工程造价咨询有限公司。同步发布于中国政府采购网。'},
   {name:'2026年松溪县农村供水保障工程--茶平乡施工投标邀请书（补充通知）',type:'其他公告',subType:'变更公告',category:'gc',owner:'松溪县茶平乡人民政府',winner:'--',amount:'--',date:'2026-08-10',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013003/20260810/7e3a16cd-2a84-4b0a-9947-fb7a4a836fd1.html',detail:'招标方式：邀请招标。补充通知发布。被邀请单位：福建省众源建设工程有限公司等5家。'},
 
   // ===== 上周 8/3-8/9 =====
@@ -230,8 +242,8 @@ var DATA = [
   {name:'松溪县三农产业孵化基地项目（二期）初步设计及概算与勘察',type:'招标公告',subType:'招标公告',category:'gc',owner:'福建松溪开发区经营管理有限公司',winner:'--',amount:'--',date:'2026-08-07',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/jsgc/010001/20260807/d7f91ab6-6b6e-40a8-927f-35d81dae062c.html',detail:'招标编号：E3507240701100075005。投标截止时间：2026-09-01 08:30。批准文号：闽发改备[2025]H090010号。'},
   {name:'2026年松溪县农村供水保障工程--茶平乡施工投标邀请书',type:'招标公告',subType:'招标公告',category:'gc',owner:'松溪县茶平乡人民政府',winner:'--',amount:'--',date:'2026-08-07',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260807/58de2d0e-7768-4279-b16c-2ab9ff948747.html',detail:'招标方式：邀请招标。批准文号：松溪县人民政府专题会议纪要〔2026〕66号。被邀请单位：福建省众源建设工程有限公司等5家。'},
   {name:'松溪县城区雨污分流第七期建设项目（城区零星片区）',type:'中标结果',subType:'中标候选人',category:'gc',owner:'松溪县城市建设综合开发公司',winner:'福建省侨达建筑有限公司',amount:'499.54万元',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/jsgc/010004/20260806/15cf2435-d548-4207-b73f-9a93132984cb.html',detail:'招标编号：E3507240701100033008。招标控制价552.12万元，发包价499.54万元。中标人：福建省侨达建筑有限公司，项目负责人：郭丽娟。工期180日历天。'},
-  {name:'松溪一中设施设备采购（小型报告厅设备）',type:'其他公告',subType:'询价公告',category:'zf',owner:'福建省松溪第一中学',winner:'待定',amount:'--',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html',detail:'项目编号：[350724]HCDL[XJ]2026003。采购方式：询价。代理机构：福建宏昌工程项目管理有限公司。'},
-  {name:'松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）',type:'其他公告',subType:'询价公告',category:'zf',owner:'福建省松溪第一中学',winner:'待定',amount:'--',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html',detail:'项目编号：[350724]PG[XJ]2026001。采购方式：询价。代理机构：福建南平宥利工程项目管理有限公司。'},
+  {name:'松溪一中设施设备采购（小型报告厅设备）',type:'招标公告',subType:'询价公告',category:'zf',owner:'福建省松溪第一中学',winner:'待定',amount:'--',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608062679879.html',detail:'项目编号：[350724]HCDL[XJ]2026003。采购方式：询价。代理机构：福建宏昌工程项目管理有限公司。'},
+  {name:'松溪一中设施设备采购（实验室设备更新、班班通及课桌椅等）',type:'招标公告',subType:'询价公告',category:'zf',owner:'福建省松溪第一中学',winner:'待定',amount:'--',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260806/FJS-2001551202608069119549.html',detail:'项目编号：[350724]PG[XJ]2026001。采购方式：询价。代理机构：福建南平宥利工程项目管理有限公司。'},
   {name:'高屯自然村道路改造及林屯村基础设施提升工程',type:'招标公告',subType:'招标公告',category:'gc',owner:'郑墩镇人民政府',winner:'--',amount:'--',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/jsgc/010001/20260806/c6882c55-d9e4-48d7-84cf-dd3d49587e8d.html',detail:'招标方式：邀请招标。审批文号：郑复[2026]5号。被邀请单位：福建鼎湛建设有限公司等5家。'},
   {name:'松溪县综治中心建设项目（勘察、设计）',type:'招标公告',subType:'招标公告',category:'gc',owner:'松溪县城市建设综合开发公司',winner:'--',amount:'--',date:'2026-08-06',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260806/f3de3334-8a23-4ad1-afa3-b945f2c7e373.html',detail:'采购方式：公开采购。代理机构：福建程泰建设管理有限公司。资金来源：县财政统筹。'},
   {name:'松溪县第三中学新教学楼搬迁设施设备采购（安防及广播系统、电脑等）',type:'招标公告',subType:'招标公告',category:'zf',owner:'松溪县第三中学',winner:'--',amount:'--',date:'2026-08-05',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/zfjzcg/009001/20260805/FJS-2001551202608059230797.html',detail:'项目编号：[350724]FJCT[GK]2026003。采购方式：公开招标。代理机构：福建程泰建设管理有限公司。同步发布于中国政府采购网。'},
@@ -253,8 +265,8 @@ var DATA = [
 // ===================== CONSTANTS =====================
 var TYPE_TAGS = {
   '招标公告':'tag-tender','中标结果':'tag-win','合同备案':'tag-contract',
-  '中标公示':'tag-pre-deal','中标候选人':'tag-pre-deal','竞争性磋商':'tag-other',
-  '询价公告':'tag-other','变更公告':'tag-correction','流标公告':'tag-correction'
+  '中标公示':'tag-pre-deal','中标候选人':'tag-pre-deal','竞争性磋商':'tag-tender',
+  '询价公告':'tag-tender','变更公告':'tag-correction','流标公告':'tag-correction'
 };
 var CAT_LABELS = {'gc':'工程建设','zf':'政府采购','qt':'其他'};
 var CAT_CLASSES = {'gc':'gc','zf':'zf','qt':'qt'};
@@ -313,7 +325,12 @@ function initPlatforms(){
 // ===================== RENDER STATS =====================
 function renderStats(){
   var counts = {'招标公告':0,'中标结果':0,'合同备案':0,'其他公告':0};
-  DATA.forEach(function(d){ if(counts.hasOwnProperty(d.type)) counts[d.type]++; });
+  DATA.forEach(function(d){
+    if(d.type==='招标公告') counts['招标公告']++;
+    else if(d.type==='中标结果') counts['中标结果']++;
+    else if(d.type==='合同备案') counts['合同备案']++;
+    else counts['其他公告']++;
+  });
   document.getElementById('s-total').textContent = DATA.length;
   document.getElementById('s-tender').textContent = counts['招标公告'];
   document.getElementById('s-win').textContent = counts['中标结果'];
