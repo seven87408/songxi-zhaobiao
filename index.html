@@ -154,7 +154,7 @@ a.project-name{color:#096dd9}
   <h1>松溪县招中标信息汇总</h1>
   <div class="subtitle">数据来源：福建省政府采购网 · 中国政府采购网 · 千里马招标网 · 中国招标网 · 工采通 · 中国招标投标公共服务平台</div>
   <div class="meta-row">
-    <span>更新日期：2026-08-11</span><span class="dot"></span>
+    <span>更新日期：2026-08-12</span><span class="dot"></span>
     <span>区域：福建省南平市松溪县</span><span class="dot"></span>
     <span>采集平台：6大招标平台</span><span class="dot"></span>
     <span>更新频率：每日10/12/16/18点</span>
@@ -205,7 +205,7 @@ a.project-name{color:#096dd9}
 </div>
 
 <div class="footer">
-  <div>数据周期：2026-07-28 至 2026-08-11 | 生成时间：2026-08-11</div>
+  <div>数据周期：2026-07-29 至 2026-08-11 | 生成时间：2026-08-12</div>
   <div class="disclaimer">以上数据由系统自动采集自六大招标平台，仅供参考，以官方发布为准</div>
   <div style="margin-top:8px"><a href="https://seven87408.github.io/songxi-zhaobiao/" target="_blank">https://seven87408.github.io/songxi-zhaobiao/</a></div>
 </div>
@@ -240,10 +240,8 @@ var DATA = [
   {name:'松溪县茶平供销社改造提升项目合同公示',type:'合同备案',subType:'合同备案',category:'qt',owner:'松溪县茶平供销社',winner:'--',amount:'--',date:'2026-08-03',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013006/',detail:'其他项目合同公示。项目名称：松溪县茶平供销社改造提升项目。'},
 
   // ===== 2周内 7/28-7/31 =====
-  {name:'松溪县郑墩镇万前-梅口河道疏浚整治工程砂石料招标（二次）',type:'其他公告',subType:'流标公告',category:'qt',owner:'松溪县郑墩镇人民政府',winner:'--',amount:'--',date:'2026-07-31',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',detail:'产权交易。二次招标流标。'},
   {name:'南平市烟草公司松溪分公司2026年叉车采购项目（重新招标）',type:'其他公告',subType:'流标公告',category:'zf',owner:'南平市烟草公司松溪分公司',winner:'--',amount:'45.22万元',date:'2026-07-29',source:'qlm',url:'http://fj.tobacco.gov.cn/np/gsgg/202608/t20260804_268525.htm',detail:'招标编号：B202601BA2001857716076。项目金额约45.2225万元。重新招标后仍流标。数据来源：千里马招标网。'},
-  {name:'县城投运营公司国有资产沿街店面',type:'中标结果',subType:'中标公示',category:'qt',owner:'松溪县城投运营公司',winner:'--',amount:'--',date:'2026-07-29',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',detail:'产权交易。沿街店面中标结果公示。'},
-  {name:'松溪县供销社资产经营管理中心解放街土产公司门市二楼店面招租（三次）',type:'其他公告',subType:'流标公告',category:'qt',owner:'松溪县供销社',winner:'--',amount:'--',date:'2026-07-28',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',detail:'产权交易。三次招租流标公告。现已发布第四次招租。'}
+  {name:'县城投运营公司国有资产沿街店面',type:'中标结果',subType:'中标公示',category:'qt',owner:'松溪县城投运营公司',winner:'--',amount:'--',date:'2026-07-29',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',detail:'产权交易。沿街店面中标结果公示。'}
 ];
 
 // ===================== CONSTANTS =====================
@@ -278,15 +276,15 @@ var searchKw = '';
 
 // ===================== HELPERS =====================
 function getWeek(dateStr){
-  if(dateStr >= '2026-08-10') return 'this';
-  if(dateStr >= '2026-08-03') return 'last';
+  if(dateStr >= '2026-08-11') return 'this';
+  if(dateStr >= '2026-08-04') return 'last';
   return 'before';
 }
 function escHtml(s){
   if(!s) return '';
   var d=document.createElement('div'); d.textContent=s; return d.innerHTML;
 }
-function isNew(dateStr){ return dateStr >= '2026-08-10'; }
+function isNew(dateStr){ return dateStr >= '2026-08-11'; }
 
 // ===================== INIT PLATFORM DATA =====================
 function initPlatforms(){
@@ -390,8 +388,8 @@ function togglePlatDetail(idx){
 function renderDataArea(){
   var areas = [
     {key:'all',label:'全部数据'},
-    {key:'this',label:'本周数据（8月10日-11日）'},
-    {key:'last',label:'上周数据（8月3日-9日）'}
+    {key:'this',label:'本周数据（8月11日-12日）'},
+    {key:'last',label:'上周数据（8月4日-10日）'}
   ];
   var subTabs = ['全部项目','招标公告','中标结果','合同备案','其他公告'];
   var html = '';
