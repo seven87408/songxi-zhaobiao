@@ -16,16 +16,7 @@
   --grid-color:rgba(9,109,217,.05);--dot-color:rgba(26,58,92,.07);
 }
 body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;position:relative;overflow-x:hidden;
-  background:
-    /* 科技网格线 */
-    linear-gradient(var(--grid-color) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid-color) 1px,transparent 1px),
-    /* 点阵图案 */
-    radial-gradient(circle,var(--dot-color) 1px,transparent 1px),
-    /* 底层渐变 */
-    var(--bg-grad);
-  background-size:40px 40px,40px 40px,20px 20px,100% 100%;
-  background-position:0 0,0 0,0 0,0 0;
+  background:var(--bg-grad);
 }
 body::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(9,109,217,.08) 0%,transparent 70%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(83,29,171,.06) 0%,transparent 70%);pointer-events:none;z-index:0}
