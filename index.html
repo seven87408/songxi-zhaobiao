@@ -15,7 +15,7 @@
   --radius:8px;
   --grid-color:rgba(9,109,217,.05);--dot-color:rgba(26,58,92,.07);
 }
-body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;position:relative;overflow-x:hidden;
+body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;color:var(--text);font-size:15px;line-height:1.7;min-height:100vh;position:relative;overflow-x:hidden;
   background:var(--bg-grad);
 }
 body::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(9,109,217,.08) 0%,transparent 70%);pointer-events:none;z-index:0}
@@ -24,19 +24,19 @@ body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;heig
 
 /* Header */
 .header{text-align:center;padding:36px 20px 28px;position:relative;z-index:1}
-.header h1{font-size:26px;font-weight:700;color:#16467a;letter-spacing:2px;margin-bottom:6px}
-.header .subtitle{font-size:13px;color:var(--text-light);margin-bottom:14px}
-.header .meta-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--text-muted)}
+.header h1{font-size:28px;font-weight:700;color:#16467a;letter-spacing:2px;margin-bottom:6px}
+.header .subtitle{font-size:14px;color:var(--text-light);margin-bottom:14px}
+.header .meta-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--text-muted)}
 .header .meta-row span{display:inline-flex;align-items:center;gap:4px}
 .header .meta-row .dot{width:4px;height:4px;border-radius:50%;background:var(--text-muted)}
 
 /* Stats Bar */
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
-.stat-card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-border);border-radius:var(--radius);padding:18px 12px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat-card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-border);border-radius:var(--radius);padding:22px 16px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow)}
 .stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 .stat-card.active{border-width:2px;border-style:solid}
-.stat-val{font-size:30px;font-weight:700;line-height:1.2}
-.stat-label{font-size:12px;color:var(--text-light);margin-top:4px}
+.stat-val{font-size:34px;font-weight:700;line-height:1.2}
+.stat-label{font-size:14px;color:var(--text-light);margin-top:4px}
 .stat-card.s-total .stat-val{color:var(--c-total)}
 .stat-card.s-tender .stat-val{color:var(--c-tender)}
 .stat-card.s-win .stat-val{color:var(--c-win)}
@@ -55,25 +55,25 @@ body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;heig
 .area-tab.active{color:#fff;background:linear-gradient(135deg,#096dd9 0%,#16467a 100%);border-color:#096dd9;box-shadow:0 -2px 12px rgba(9,109,217,.2)}
 
 /* Hint Box */
-.hint-box{background:rgba(9,109,217,.06);border:1px solid rgba(9,109,217,.15);border-radius:var(--radius);padding:10px 16px;font-size:12px;color:var(--text-light);margin:16px 0;line-height:1.8}
+.hint-box{background:rgba(9,109,217,.06);border:1px solid rgba(9,109,217,.15);border-radius:var(--radius);padding:12px 18px;font-size:14px;color:var(--text-light);margin:16px 0;line-height:1.8}
 
 /* Sub Tabs */
 .sub-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
-.sub-tab{padding:5px 16px;font-size:12px;font-weight:500;color:var(--text-light);background:rgba(255,255,255,.6);border:1px solid var(--card-border);border-radius:20px;cursor:pointer;transition:all .2s}
+.sub-tab{padding:6px 18px;font-size:14px;font-weight:500;color:var(--text-light);background:rgba(255,255,255,.6);border:1px solid var(--card-border);border-radius:20px;cursor:pointer;transition:all .2s}
 .sub-tab:hover{color:var(--text);border-color:rgba(9,109,217,.3)}
 .sub-tab.active{background:#096dd9;color:#fff;border-color:#096dd9}
 .sub-tabs .spacer{flex:1}
-.search-input{border:1px solid var(--card-border);border-radius:20px;padding:5px 14px;font-size:12px;outline:none;width:220px;background:rgba(255,255,255,.7);transition:border-color .2s}
+.search-input{border:1px solid var(--card-border);border-radius:20px;padding:6px 16px;font-size:14px;outline:none;width:240px;background:rgba(255,255,255,.7);transition:border-color .2s}
 .search-input:focus{border-color:#096dd9}
 
 /* Platform Section — matches data table style */
 .platform-section{margin-top:32px}
-.platform-section-title{font-size:14px;font-weight:600;color:#16467a;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.platform-section-title{font-size:16px;font-weight:600;color:#16467a;margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .plat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
-.plat-tab{padding:5px 16px;font-size:12px;font-weight:500;color:var(--text-light);background:rgba(255,255,255,.6);border:1px solid var(--card-border);border-radius:20px;cursor:pointer;transition:all .2s}
+.plat-tab{padding:6px 18px;font-size:14px;font-weight:500;color:var(--text-light);background:rgba(255,255,255,.6);border:1px solid var(--card-border);border-radius:20px;cursor:pointer;transition:all .2s}
 .plat-tab:hover{color:var(--text);border-color:rgba(9,109,217,.3)}
 .plat-tab.active{background:#096dd9;color:#fff;border-color:#096dd9}
-.plat-tab .plat-badge{font-size:11px;font-weight:700;margin-left:4px;padding:1px 6px;border-radius:10px;background:rgba(9,109,217,.1);color:#096dd9}
+.plat-tab .plat-badge{font-size:12px;font-weight:700;margin-left:4px;padding:1px 7px;border-radius:10px;background:rgba(9,109,217,.1);color:#096dd9}
 .plat-tab.active .plat-badge{background:rgba(255,255,255,.25);color:#fff}
 .plat-tab .plat-badge.zero{background:rgba(143,168,192,.15);color:var(--text-muted)}
 .plat-tab.active .plat-badge.zero{background:rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
@@ -83,11 +83,11 @@ body::after{content:'';position:fixed;bottom:-300px;left:-100px;width:500px;heig
 .data-section.active{display:block}
 .table-wrap{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 table{width:100%;border-collapse:collapse}
-thead th{background:rgba(26,58,92,.95);color:#fff;font-size:12px;font-weight:600;padding:10px 12px;text-align:left;white-space:nowrap;position:sticky;top:0;z-index:1}
-tbody td{padding:10px 12px;font-size:13px;border-bottom:1px solid rgba(26,58,92,.06);vertical-align:top}
+thead th{background:rgba(26,58,92,.95);color:#fff;font-size:14px;font-weight:600;padding:12px 14px;text-align:left;white-space:nowrap;position:sticky;top:0;z-index:1}
+tbody td{padding:12px 14px;font-size:14px;border-bottom:1px solid rgba(26,58,92,.06);vertical-align:top}
 tbody tr:last-child td{border-bottom:none}
 tbody tr:hover{background:rgba(9,109,217,.04)}
-.project-name{font-weight:600;color:#16467a;cursor:pointer;display:block;max-width:300px;line-height:1.4}
+.project-name{font-weight:600;color:#16467a;cursor:pointer;display:block;max-width:340px;line-height:1.5}
 .project-name:hover{text-decoration:underline}
 .project-name.no-link{cursor:default;color:var(--text)}
 .project-name.no-link:hover{text-decoration:none}
@@ -97,18 +97,18 @@ a.project-name{color:#096dd9}
 .date-cell{white-space:nowrap;color:var(--text-light)}
 
 /* Tags */
-.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;white-space:nowrap}
+.tag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:12px;font-weight:600;white-space:nowrap}
 .tag-tender{background:#e6f7ff;color:#096dd9;border:1px solid #91d5ff}
 .tag-win{background:#f6ffed;color:#389e0d;border:1px solid #b7eb8f}
 .tag-contract{background:#e6fffb;color:#08979c;border:1px solid #87e8de}
 .tag-pre-deal{background:#fff7e6;color:#d46b08;border:1px solid #ffd591}
 .tag-correction{background:#fffbe6;color:#d48806;border:1px solid #ffe58f}
 .tag-other{background:#f9f0ff;color:#531dab;border:1px solid #d3adf7}
-.tag-cat{display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:500;margin-left:4px}
+.tag-cat{display:inline-block;padding:2px 6px;border-radius:3px;font-size:11px;font-weight:500;margin-left:4px}
 .tag-cat.gc{background:#f6ffed;color:#389e0d}
 .tag-cat.zf{background:#e6f7ff;color:#096dd9}
 .tag-cat.qt{background:#f9f0ff;color:#531dab}
-.source-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:500}
+.source-tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500}
 .s-fjzfcg{background:#e6f7ff;color:#096dd9}
 .s-ccgp{background:#f6ffed;color:#389e0d}
 .s-qlm{background:#fff7e6;color:#d46b08}
@@ -120,17 +120,17 @@ a.project-name{color:#096dd9}
 .detail-row{display:none}
 .detail-row.open{display:table-row}
 .detail-cell{padding:12px 20px;background:rgba(244,248,254,.6);border-bottom:1px solid rgba(26,58,92,.06)}
-.detail-content{max-width:800px;font-size:12px;color:var(--text-light);line-height:1.8}
+.detail-content{max-width:800px;font-size:13px;color:var(--text-light);line-height:1.8}
 .detail-content strong{color:var(--text);font-weight:600}
 .detail-content a{color:#096dd9;text-decoration:none}
 .detail-content a:hover{text-decoration:underline}
 
 /* New badge */
-.new-badge{display:inline-block;background:#ff4d4f;color:#fff;font-size:10px;padding:1px 6px;border-radius:3px;margin-left:6px;font-weight:600;animation:pulse 2s infinite}
+.new-badge{display:inline-block;background:#ff4d4f;color:#fff;font-size:11px;padding:1px 6px;border-radius:3px;margin-left:6px;font-weight:600;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* Footer */
-.footer{text-align:center;padding:28px 16px;font-size:12px;color:var(--text-muted);margin-top:32px;border-top:1px solid rgba(26,58,92,.08)}
+.footer{text-align:center;padding:28px 16px;font-size:13px;color:var(--text-muted);margin-top:32px;border-top:1px solid rgba(26,58,92,.08)}
 .footer a{color:#096dd9;text-decoration:none}
 .footer a:hover{text-decoration:underline}
 .footer .disclaimer{margin-top:8px;font-style:italic}
@@ -151,10 +151,10 @@ a.project-name{color:#096dd9}
 <body>
 
 <div class="header">
-  <h1>松溪县招中标信息汇总 <span style="font-size:15px;font-weight:400;color:var(--text-light);letter-spacing:0">（2026年07月29日 - 2026年08月12日）</span></h1>
+  <h1>松溪县招中标信息汇总 <span style="font-size:16px;font-weight:400;color:var(--text-light);letter-spacing:0">（2026年07月30日 - 2026年08月13日）</span></h1>
   <div class="subtitle">数据来源：福建省政府采购网 · 中国政府采购网 · 千里马招标网 · 中国招标网 · 工采通 · 中国招标投标公共服务平台</div>
   <div class="meta-row">
-    <span>更新日期：2026-08-12</span><span class="dot"></span>
+    <span>更新日期：2026-08-13</span><span class="dot"></span>
     <span>区域：福建省南平市松溪县</span><span class="dot"></span>
     <span>采集平台：6大招标平台</span><span class="dot"></span>
     <span>更新频率：每日10/12/16/18点</span>
@@ -202,7 +202,7 @@ a.project-name{color:#096dd9}
 </div>
 
 <div class="footer">
-  <div>数据周期：2026-07-29 至 2026-08-11 | 生成时间：2026-08-12</div>
+  <div>数据周期：2026-07-30 至 2026-08-13 | 生成时间：2026-08-13</div>
   <div class="disclaimer">以上数据由系统自动采集自六大招标平台，仅供参考，以官方发布为准</div>
   <div style="margin-top:8px"><a href="https://seven87408.github.io/songxi-zhaobiao/" target="_blank">https://seven87408.github.io/songxi-zhaobiao/</a></div>
 </div>
@@ -210,7 +210,8 @@ a.project-name{color:#096dd9}
 <script>
 // ===================== DATA =====================
 var DATA = [
-  // ===== 本周 8/10-8/11 =====
+  // ===== 本周 8/11-8/13 =====
+  {name:'松溪县旧县乡岩下村岩下小学修缮项目',type:'招标公告',subType:'招标公告',category:'gc',owner:'福建省松溪县旧县乡岩下村民委员会',winner:'--',amount:'123.04万元',date:'2026-08-12',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013001/20260812/d34385b7-d1f8-44e9-9695-fcd88f5b372e.html',detail:'招标方式：邀请招标。招标控制价1230374元。被邀请单位：福建广盈达建设有限公司等5家。投标截止时间：2026-08-25 09:00。代理机构：福建程泰建设管理有限公司。'},
   {name:'松溪县重点村庄生活污水提升治理项目（一期）设计方案优化服务采购',type:'中标结果',subType:'中标候选人',category:'zf',owner:'松溪县城市建设综合开发公司',winner:'天津大学建筑设计规划研究总院有限公司',amount:'42.00万元',date:'2026-08-11',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013004/20260811/ff6d6dcb-3af8-4405-a99e-12b92cb4b57e.html',detail:'招标编号：E350724202000106001001。第一中标候选人：天津大学建筑设计规划研究总院有限公司，投标报价42.00万元，综合得分95.51分。'},
   {name:'松溪县郑墩镇张屯村际下岩角垅机耕路硬化项目（二次）合同公示',type:'合同备案',subType:'合同备案',category:'qt',owner:'松溪县郑墩镇张屯村',winner:'--',amount:'--',date:'2026-08-11',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013006/',detail:'其他项目合同公示阶段。项目编号：郑墩镇张屯村际下岩角垅机耕路硬化项目（二次）。'},
   {name:'松溪县供销社资产经营管理中心解放街土产公司门市二楼店面招租（四次）',type:'招标公告',subType:'招标公告',category:'qt',owner:'松溪县供销社',winner:'--',amount:'--',date:'2026-08-11',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/',detail:'产权交易招标公告。第四次招租，前三均流标。交易方式：挂牌出让。'},
@@ -236,9 +237,8 @@ var DATA = [
   {name:'松溪县老旧小区二期改造及配套基础设施提升工程——河东片区改造项目合同备案',type:'合同备案',subType:'合同备案',category:'gc',owner:'松溪县住房和城乡建设局',winner:'--',amount:'--',date:'2026-08-03',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/jsgc/010006/',detail:'建设工程合同备案阶段。项目名称：松溪县老旧小区二期改造河东片区改造项目。'},
   {name:'松溪县茶平供销社改造提升项目合同公示',type:'合同备案',subType:'合同备案',category:'qt',owner:'松溪县茶平供销社',winner:'--',amount:'--',date:'2026-08-03',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/qyzbxx/013006/',detail:'其他项目合同公示。项目名称：松溪县茶平供销社改造提升项目。'},
 
-  // ===== 2周内 7/28-7/31 =====
-  {name:'南平市烟草公司松溪分公司2026年叉车采购项目（重新招标）',type:'其他公告',subType:'流标公告',category:'zf',owner:'南平市烟草公司松溪分公司',winner:'--',amount:'45.22万元',date:'2026-07-29',source:'qlm',url:'http://fj.tobacco.gov.cn/np/gsgg/202608/t20260804_268525.htm',detail:'招标编号：B202601BA2001857716076。项目金额约45.2225万元。重新招标后仍流标。数据来源：千里马招标网。'},
-  {name:'县城投运营公司国有资产沿街店面',type:'中标结果',subType:'中标公示',category:'qt',owner:'松溪县城投运营公司',winner:'--',amount:'--',date:'2026-07-29',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',detail:'产权交易。沿街店面中标结果公示。'}
+  // ===== 2周内 7/30-7/31 =====
+  {name:'县城投运营公司国有资产沿街店面',type:'中标结果',subType:'中标公示',category:'qt',owner:'松溪县城投运营公司',winner:'--',amount:'--',date:'2026-07-30',source:'fjzfcg',url:'https://ggzy.np.gov.cn/sx/gycqjy/moreinfo.html',detail:'产权交易。沿街店面中标结果公示。'}
 ];
 
 // ===================== CONSTANTS =====================
@@ -281,7 +281,7 @@ function escHtml(s){
   if(!s) return '';
   var d=document.createElement('div'); d.textContent=s; return d.innerHTML;
 }
-function isNew(dateStr){ return dateStr >= '2026-08-11'; }
+function isNew(dateStr){ return dateStr >= '2026-08-12'; }
 
 // ===================== INIT PLATFORM DATA =====================
 function initPlatforms(){
@@ -383,7 +383,7 @@ function togglePlatDetail(idx){
 function renderDataArea(){
   var areas = [
     {key:'all',label:'全部数据'},
-    {key:'this',label:'本周数据（8月11日-12日）'},
+    {key:'this',label:'本周数据（8月11日-13日）'},
     {key:'last',label:'上周数据（8月4日-10日）'}
   ];
   var subTabs = ['全部项目','招标公告','中标结果','其他公告'];
